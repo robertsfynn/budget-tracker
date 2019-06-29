@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { withFirebase } from '../Firebase';
 
 const RegisterForm = ({ firebase }) => {
