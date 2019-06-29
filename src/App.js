@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
-// Firebase App (the core Firebase SDK) is always required and must be listed first
-import { firebase, db } from './Firebase/Firebase';
+import React from 'react';
+import 'bulma/css/bulma.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import { db } from './Firebase/Firebase';
+import Login from './Authentication/Login';
 
 function App() {
   db.collection('categories')
@@ -15,20 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Login />
     </div>
   );
 }
