@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+import { firebase, db } from './Firebase/Firebase';
 
 function App() {
+  db.collection('categories')
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    });
+
   return (
     <div className="App">
       <header className="App-header">
