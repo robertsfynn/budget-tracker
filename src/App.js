@@ -6,7 +6,7 @@ import Login from './Authentication/Login';
 import RegisterForm from './Authentication/RegisterForm';
 import FirebaseContext from './Firebase/FirebaseContext';
 import Loader from './Assets/Loader';
-import './App.css'
+import './App.css';
 
 function App() {
   const firebase = useContext(FirebaseContext);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ firebase }) => {
+const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 

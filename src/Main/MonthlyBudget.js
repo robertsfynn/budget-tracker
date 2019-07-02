@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import FirebaseContext from '../Firebase/FirebaseContext';
 
-const MonthlyBudget = ({ firebase }) => {
+const MonthlyBudget = () => {
   const [salary, setSalary] = useState();
   const [fixedCost, setFixedCost] = useState();
   const [savings, setSavings] = useState();
+
+  const firebase = useContext(FirebaseContext);
+
+  console.log(firebase.getCurrentUser());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +19,7 @@ const MonthlyBudget = ({ firebase }) => {
       <div className="column box is-half">
         <form onSubmit={handleSubmit}>
           <h1 className="title has-text-black has-text-centered">
-            Money per month
+            Monthly Budget
           </h1>
           <div className="field">
             <label className="label">Salary</label>
@@ -51,7 +56,7 @@ const MonthlyBudget = ({ firebase }) => {
           </div>
           <div className="field">
             <p className="control">
-              <button className="button is-success">Login</button>
+              <button className="button is-success is-fullwidth">Save</button>
             </p>
           </div>
         </form>
