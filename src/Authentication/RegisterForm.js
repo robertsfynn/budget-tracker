@@ -1,19 +1,20 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { withFirebase } from '../Firebase';
+import FirebaseContext from '../Firebase/FirebaseContext';
 
-const RegisterForm = ({ firebase }) => {
+const RegisterForm = () => {
   const [values, setValues] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
-
+  const firebase = useContext(FirebaseContext);
+  console.log(firebase);
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(values.email, values.password)
-      .catch(function(error) {
-        setErrorMessage(error.message);
-      });
+    // firebase
+    //   .auth()
+    //   .createUserWithEmailAndPassword(values.email, values.password)
+    //   .catch(function(error) {
+    //     setErrorMessage(error.message);
+    //   });
   };
 
   const handleChange = (e) => {
@@ -75,4 +76,4 @@ const RegisterForm = ({ firebase }) => {
   );
 };
 
-export default withFirebase(RegisterForm);
+export default RegisterForm;

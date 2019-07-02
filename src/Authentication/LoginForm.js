@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withFirebase } from '../Firebase';
 
 const LoginForm = ({ firebase }) => {
   const [email, setEmail] = useState('');
@@ -45,4 +44,4 @@ const LoginForm = ({ firebase }) => {
   );
 };
 
-export default withFirebase(LoginForm);
+export default LoginForm;

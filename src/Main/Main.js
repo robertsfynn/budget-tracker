@@ -1,21 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { withFirebase } from '../Firebase';
-import Loader from '../Assets/Loader';
+import React from 'react';
 import MonthlyBudget from './MonthlyBudget';
 
 const Main = ({ firebase }) => {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-      }
-    });
-  }, []);
-
   return (
     <section className="hero is-primary is-fullheight">
       <div className="hero-body">
@@ -30,4 +16,4 @@ const Main = ({ firebase }) => {
   );
 };
 
-export default withFirebase(Main);
+export default Main;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { withFirebase } from '../Firebase';
 
 const MonthlyBudget = ({ firebase }) => {
   const [salary, setSalary] = useState();
@@ -12,7 +11,7 @@ const MonthlyBudget = ({ firebase }) => {
 
   return (
     <div className="columns is-centered">
-      <div className="box column is-half">
+      <div className="column box is-half">
         <form onSubmit={handleSubmit}>
           <h1 className="title has-text-black has-text-centered">
             Money per month
@@ -61,4 +60,4 @@ const MonthlyBudget = ({ firebase }) => {
   );
 };
 
-export default withFirebase(MonthlyBudget);
+export default MonthlyBudget;

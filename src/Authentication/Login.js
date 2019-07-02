@@ -8,7 +8,7 @@ const Login = () => {
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
-            <div className="box column is-two-fifths">
+            <div className="column box is-two-fifths">
               <RegisterForm />
               <p className="is-centered">
                 Dont have an Account? Register here!

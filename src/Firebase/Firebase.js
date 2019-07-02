@@ -11,6 +11,37 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERID,
 };
 
-firebase.initializeApp(config);
+class Firebase {
+  constructor() {
+    firebase.initializeApp(config);
+    this.auth = firebase.auth();
+    this.db = firebase.firestore();
+  }
 
-export default firebase;
+  login(email, password) {
+    return this.auth.signInWithEmailAndPassword(email, password);
+  }
+
+  logout() {
+    return this.auth.signOut();
+  }
+
+  async register(name, email, password) {
+    await this.auth.createUserWithEmailAndPassword(email, password);
+    return this.auth.currentUser.updateProfile({
+      displayName: name,
+    });
+  }
+
+  isInitialized() {
+    return new Promise((resolve) => {
+      this.auth.onAuthStateChanged(resolve);
+    });
+  }
+
+  getCurrentUsername() {
+    return this.auth.currentUser && this.auth.currentUser.displayName;
+  }
+}
+
+export default Firebase;
