@@ -2,8 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { withFirebase } from '../Firebase';
 
 const RegisterForm = ({ firebase }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [values, setValues] = useState({ email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e) => {
@@ -11,10 +10,19 @@ const RegisterForm = ({ firebase }) => {
 
     firebase
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(values.email, values.password)
       .catch(function(error) {
         setErrorMessage(error.message);
       });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
   };
 
   let showErrorMessage = '';
@@ -25,7 +33,7 @@ const RegisterForm = ({ firebase }) => {
     );
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form onSubmit={handleSubmit}>
       <h1 className="title has-text-black has-text-centered">Registration</h1>
       <div className="field">
         <label className="label">E-Mail</label>
@@ -33,8 +41,9 @@ const RegisterForm = ({ firebase }) => {
           <input
             className="input is-medium"
             type="email"
-            vale={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={values.email}
+            onChange={handleChange}
           />
           <span className="icon is-small is-left">
             <i className="fas fa-envelope" />
@@ -47,8 +56,9 @@ const RegisterForm = ({ firebase }) => {
           <input
             className="input is-medium"
             type="password"
-            vale={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={values.password}
+            onChange={handleChange}
           />
           <span className="icon is-small is-left">
             <i className="fas fa-lock" />
