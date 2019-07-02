@@ -1,3 +1,10 @@
 .column.box {
   padding: 1.25rem;
 }
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+}

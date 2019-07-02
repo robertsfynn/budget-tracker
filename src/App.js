@@ -4,26 +4,16 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import Main from './Main/Main';
 import Login from './Authentication/Login';
 import RegisterForm from './Authentication/RegisterForm';
-import FirebaseContext from './Firebase/FirebaseContext';
 import Loader from './Assets/Loader';
 import './App.css';
+import Navbar from './Navbar/Navbar';
 
 function App() {
-  const firebase = useContext(FirebaseContext);
-  const [firebaseInitialized, setFirebaseInitialized] = useState(false);
-
-  useEffect(() => {
-    firebase.isInitialized().then((val) => {
-      setFirebaseInitialized(val);
-    });
-  });
-
-  return firebaseInitialized ? (
+  return (
     <div className="App">
+      <Navbar />
       <Main />
     </div>
-  ) : (
-    <Loader />
   );
 }
 

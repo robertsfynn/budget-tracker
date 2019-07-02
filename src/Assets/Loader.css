@@ -1,0 +1,11 @@
+.loader-section {
+  height: calc(100% - 52px);
+  background-color: #00d1b2;
+}
+
+.loader-section__loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
