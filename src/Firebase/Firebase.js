@@ -39,6 +39,19 @@ class Firebase {
     });
   }
 
+  createMonthlyBudget(monthlyBudget) {
+    return this.db.doc(`monthlyBudget/${this.auth.currentUser.uid}`).set({
+      monthlyBudget,
+    });
+  }
+
+  async getMonthlyBudget() {
+    const monthlyBudget = await this.db
+      .doc(`monthlyBudget/${this.auth.currentUser.uid}`)
+      .get();
+    return monthlyBudget.data();
+  }
+
   getCurrentUser() {
     return this.auth.currentUser;
   }

@@ -2,16 +2,25 @@ import React, { useState, useContext } from 'react';
 import FirebaseContext from '../Firebase/FirebaseContext';
 
 const MonthlyBudget = () => {
-  const [salary, setSalary] = useState();
-  const [fixedCost, setFixedCost] = useState();
-  const [savings, setSavings] = useState();
+  const [values, setValues] = useState({
+    salary: '',
+    fixedCost: '',
+    savings: '',
+  });
 
-  const firebase = useContext(FirebaseContext);
-
-  console.log(firebase.getCurrentUser());
+  const Firebase = useContext(FirebaseContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    Firebase.createMonthlyBudget(values).then((element) => {
+      console.log(element);
+    });
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   };
 
   return (
@@ -27,8 +36,9 @@ const MonthlyBudget = () => {
               <input
                 className="input"
                 type="number"
-                value={salary}
-                onChange={(e) => setSalary(e.target.value)}
+                name="salary"
+                value={values.salary}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -38,8 +48,9 @@ const MonthlyBudget = () => {
               <input
                 className="input"
                 type="number"
-                value={fixedCost}
-                onChange={(e) => setFixedCost(e.target.value)}
+                name="fixedCost"
+                value={values.fixedCost}
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -49,8 +60,9 @@ const MonthlyBudget = () => {
               <input
                 className="input"
                 type="number"
-                value={savings}
-                onChange={(e) => setSavings(e.target.value)}
+                name="savings"
+                value={values.savings}
+                onChange={handleChange}
               />
             </div>
           </div>

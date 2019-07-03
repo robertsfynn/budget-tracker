@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import MonthlyBudget from './MonthlyBudget';
-import Loader from '../Assets/Loader';
+import FirebaseContext from '../Firebase/FirebaseContext';
 
 const Main = () => {
-  return <Loader />;
-  // return (
-  //   <section className="hero is-primary is-fullheight">
-  //     <div className="hero-body">
-  //       <div className="container">
-  //         <MonthlyBudget />
-  //       </div>
-  //     </div>
-  //   </section>
-  // );
+  const [monthlyBudget, setmonthlyBudget] = useState(true);
+  const Firebase = useContext(FirebaseContext);
+
+  useEffect(() => {
+    Firebase.getMonthlyBudget().then(() => {
+      setmonthlyBudget(monthlyBudget);
+    });
+  });
+
+  return (
+    <section className="section section-full-height">
+      <div className="container">
+        {monthlyBudget ? null : <MonthlyBudget />}
+      </div>
+    </section>
+  );
 };
 
 export default Main;

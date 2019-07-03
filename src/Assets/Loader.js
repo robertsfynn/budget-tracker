@@ -3,7 +3,7 @@ import './Loader.css';
 
 const Loader = () => {
   return (
-    <div className="section loader-section">
+    <div className="section section-full-height">
       <svg
         width="55"
         height="80"
