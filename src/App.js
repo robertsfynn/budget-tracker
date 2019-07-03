@@ -23,9 +23,9 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <Navbar />
         {isInitiliazed ? (
           <>
-            <Navbar />
             <Route path="/" exact component={Main} />
             <Route path="/login/" component={Login} />
             <Route path="/register/" component={Register} />
