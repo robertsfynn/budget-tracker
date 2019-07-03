@@ -9,3 +9,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+
+.navbar-placeholder {
+  height: 52px;
+  background-color: #ffffff;
+  width: 100%;
+}
