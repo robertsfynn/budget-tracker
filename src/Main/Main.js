@@ -5,27 +5,32 @@ import FirebaseContext from '../Firebase/FirebaseContext';
 import MoneyTracker from './MoneyTracker';
 
 const Main = ({ history }) => {
-  const [monthlyBudget, setMonthlyBudget] = useState({});
+  const [monthlyBudget, setMonthlyBudget] = useState(true);
   const Firebase = useContext(FirebaseContext);
 
   useEffect(() => {
     const getMonthlyBudget = async () => {
       const monthlyBudget = await Firebase.getMonthlyBudget();
-      setMonthlyBudget(monthlyBudget);
+      if (monthlyBudget) setMonthlyBudget(monthlyBudget);
+      else setMonthlyBudget(false);
     };
 
     if (!Firebase.getCurrentUser()) history.push('/login');
     else getMonthlyBudget();
   }, []);
-  console.log(monthlyBudget);
+
+  //Really unhappy how monthlyBudget gets rendered if there are none yet,
+  // will find a better solution than that dirty hack
+
   return (
     <section className="section section-full-height">
       <div className="container">
-        {monthlyBudget ? (
+        {typeof monthlyBudget === 'object' ? (
           <MoneyTracker monthlyBudget={monthlyBudget} />
-        ) : (
+        ) : null}
+        {!monthlyBudget ? (
           <MonthlyBudget setMonthlyBudget={setMonthlyBudget} />
-        )}
+        ) : null}
       </div>
     </section>
   );
