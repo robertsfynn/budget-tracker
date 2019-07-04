@@ -7,12 +7,12 @@ const LoginForm = ({ history }) => {
   const [isLoading, setIsLoading] = useState(false);
   const Firebase = useContext(FirebaseContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     setIsLoading(true);
-    Firebase.login(values.email, values.password).then((user) => {
-      history.push('/');
-    });
+    await Firebase.login(values.email, values.password);
+    history.push('/');
   };
 
   const handleChange = (e) => {

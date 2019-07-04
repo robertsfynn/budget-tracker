@@ -1,16 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import FirebaseContext from '../Firebase/FirebaseContext';
 
-const Navbar = () => {
-  const Firebase = useContext(FirebaseContext);
+const Navbar = ({ history }) => {
   const [active, setActive] = useState(false);
+  const Firebase = useContext(FirebaseContext);
 
   let navbarButton;
 
+  const logout = async () => {
+    await Firebase.logout();
+    history.push('/login');
+  };
+
   if (Firebase.getCurrentUser()) {
     navbarButton = (
-      <button onClick={Firebase.logout} className="button is-light">
+      <button onClick={logout} className="button is-light">
         Logout
       </button>
     );
@@ -20,7 +25,6 @@ const Navbar = () => {
         <Link to="/register/" className="button is-primary">
           <strong>Sign up</strong>
         </Link>
-
         <Link to="/login/" className="button is-light">
           Login
         </Link>
@@ -62,4 +66,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);

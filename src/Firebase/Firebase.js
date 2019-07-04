@@ -13,7 +13,6 @@ const config = {
 
 class Firebase {
   constructor() {
-    console.log('getting called');
     firebase.initializeApp(config);
     this.auth = firebase.auth();
     this.db = firebase.firestore();
@@ -47,10 +46,10 @@ class Firebase {
   }
 
   async getMonthlyBudget() {
-    console.log(this.auth);
     const monthlyBudget = await this.db
       .doc(`monthlyBudget/${this.auth.currentUser.uid}`)
       .get();
+
     return monthlyBudget.data();
   }
 

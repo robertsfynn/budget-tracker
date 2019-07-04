@@ -5,14 +5,10 @@ const RegisterForm = () => {
   const [values, setValues] = useState({ name: '', email: '', password: '' });
   const [errorMessage, setErrorMessage] = useState('');
   const Firebase = useContext(FirebaseContext);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    Firebase.register(values.name, values.email, values.password).then(
-      (user) => {
-        console.log(user);
-      },
-    );
+    await Firebase.register(values.name, values.email, values.password);
   };
 
   const handleChange = (e) => {

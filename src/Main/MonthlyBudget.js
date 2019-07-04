@@ -1,21 +1,22 @@
 import React, { useState, useContext } from 'react';
 import FirebaseContext from '../Firebase/FirebaseContext';
 
-const MonthlyBudget = () => {
+const MonthlyBudget = ({ setMonthlyBudget }) => {
   const [values, setValues] = useState({
     salary: '',
     fixedCost: '',
     savings: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const Firebase = useContext(FirebaseContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
-    Firebase.setMonthlyBudget(values).then((element) => {
-      console.log(element);
-    });
+
+    setIsLoading(true);
+    await Firebase.setMonthlyBudget(values);
+    setMonthlyBudget(values);
   };
 
   const handleChange = (e) => {
@@ -39,6 +40,7 @@ const MonthlyBudget = () => {
                 name="salary"
                 value={values.salary}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -51,6 +53,7 @@ const MonthlyBudget = () => {
                 name="fixedCost"
                 value={values.fixedCost}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
@@ -63,12 +66,17 @@ const MonthlyBudget = () => {
                 name="savings"
                 value={values.savings}
                 onChange={handleChange}
+                required
               />
             </div>
           </div>
           <div className="field">
             <p className="control">
-              <button className="button is-success is-fullwidth">Save</button>
+              <button
+                className={`button is-fullwidth is-success ${
+                  isLoading ? 'is-loading' : ''
+                }`}
+              />
             </p>
           </div>
         </form>
