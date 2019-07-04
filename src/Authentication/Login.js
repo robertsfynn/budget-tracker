@@ -1,14 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import FirebaseContext from '../Firebase/FirebaseContext';
 
-const LoginForm = () => {
+const LoginForm = ({ history }) => {
   const [values, setValues] = useState({ email: '', password: '' });
+  const [isLoading, setIsLoading] = useState(false);
   const Firebase = useContext(FirebaseContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     Firebase.login(values.email, values.password).then((user) => {
-      console.log(user);
+      history.push('/');
     });
   };
 
@@ -16,6 +19,10 @@ const LoginForm = () => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
   };
+
+  useEffect(() => {
+    if (Firebase.getCurrentUser()) history.push('/');
+  }, []);
 
   return (
     <section className="section section-full-height">
@@ -59,7 +66,11 @@ const LoginForm = () => {
                 </div>
                 <div className="field">
                   <p className="control has-text-centered">
-                    <button className="button is-fullwidth is-success">
+                    <button
+                      className={`button is-fullwidth is-success ${
+                        isLoading ? 'is-loading' : ''
+                      }`}
+                    >
                       Login
                     </button>
                   </p>
@@ -73,4 +84,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);

@@ -10,9 +10,9 @@ const Navbar = () => {
 
   if (Firebase.getCurrentUser()) {
     navbarButton = (
-      <Link onClick={Firebase.logout} className="button is-light">
+      <button onClick={Firebase.logout} className="button is-light">
         Logout
-      </Link>
+      </button>
     );
   } else {
     navbarButton = (
@@ -27,8 +27,6 @@ const Navbar = () => {
       </div>
     );
   }
-
-  console.log(Firebase.getCurrentUser());
 
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">

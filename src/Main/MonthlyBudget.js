@@ -12,8 +12,8 @@ const MonthlyBudget = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    Firebase.createMonthlyBudget(values).then((element) => {
+    console.log(values);
+    Firebase.setMonthlyBudget(values).then((element) => {
       console.log(element);
     });
   };
