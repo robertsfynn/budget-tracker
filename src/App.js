@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Main from './components/Main/Main';
 import Login from './components/Authentication/Login';
 import Register from './components/Authentication/Register';
-import Loader from './components/Assets/Loader';
 import FirebaseContext from './components/Firebase/FirebaseContext';
 import Navbar from './components/Navbar/Navbar';
 
