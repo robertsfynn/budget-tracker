@@ -76,7 +76,9 @@ const MonthlyBudget = ({ setMonthlyBudget }) => {
                 className={`button is-fullwidth is-success ${
                   isLoading ? 'is-loading' : ''
                 }`}
-              />
+              >
+                Save
+              </button>
             </p>
           </div>
         </form>

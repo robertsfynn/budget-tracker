@@ -1,14 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import 'bulma/css/bulma.min.css';
-import '@fortawesome/fontawesome-free/css/all.css';
-import Main from './Main/Main';
-import Login from './Authentication/Login';
-import Register from './Authentication/Register';
-import Loader from './Assets/Loader';
-import FirebaseContext from './Firebase/FirebaseContext';
-import './App.css';
-import Navbar from './Navbar/Navbar';
+import Main from './components/Main/Main';
+import Login from './components/Authentication/Login';
+import Register from './components/Authentication/Register';
+import Loader from './components/Assets/Loader';
+import FirebaseContext from './components/Firebase/FirebaseContext';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   const [isInitiliazed, setIsInitiliazed] = useState(false);
@@ -25,14 +22,12 @@ function App() {
       <div className="App">
         {isInitiliazed ? (
           <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Route path="/" exact component={Main} />
             <Route path="/login/" component={Login} />
             <Route path="/register/" component={Register} />
           </>
-        ) : (
-          <Loader />
-        )}
+        ) : null}
       </div>
     </Router>
   );
