@@ -42,16 +42,16 @@ const Navbar = ({ history }) => {
             <NavbarItem text="Daily" active logo={DailyLogo} />
           </Column>
           <Column>
-            <NavbarItem text="Daily" active logo={DailyLogo} />
+            <NavbarItem text="Daily" logo={DailyLogo} />
           </Column>
           <StyledDivAddButton>
             <AddButton />
           </StyledDivAddButton>
           <Column offset="20%">
-            <NavbarItem text="Daily" active logo={DailyLogo} />
+            <NavbarItem text="Daily" logo={DailyLogo} />
           </Column>
           <Column>
-            <NavbarItem text="Daily" active logo={DailyLogo} />
+            <NavbarItem text="Daily" logo={DailyLogo} />
           </Column>
         </Row>
       </Container>

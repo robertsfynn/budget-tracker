@@ -4,7 +4,6 @@ import Main from './views/Main/Main';
 import Login from './views/Authentication/Login';
 import Register from './views/Authentication/Register';
 import FirebaseContext from './components/Firebase/FirebaseContext';
-import Navbar from './components/Navbar';
 
 function App() {
   const [isInitiliazed, setIsInitiliazed] = useState(false);
@@ -16,20 +15,15 @@ function App() {
     });
   }, []);
 
-  return (
+  return isInitiliazed ? (
     <Router>
       <div className="App">
-        {isInitiliazed ? (
-          <>
-            {/* <Navbar /> */}
-            <Route path="/" exact component={Main} />
-            <Route path="/login/" component={Login} />
-            <Route path="/register/" component={Register} />
-          </>
-        ) : null}
+        <Route path="/" exact component={Main} />
+        <Route path="/login/" component={Login} />
+        <Route path="/register/" component={Register} />
       </div>
     </Router>
-  );
+  ) : null;
 }
 
 export default App;
