@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from './grid';
 
 import TransactionListItem from './TransactionListItem';
@@ -7,7 +7,7 @@ const TransactionList = () => {
   return (
     <Container>
       <TransactionListItem
-        category="Essen"
+        category="eating"
         payee="Dieter Müller"
         date="Fri 10AM"
         amount="320"

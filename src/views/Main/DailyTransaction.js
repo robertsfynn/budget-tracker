@@ -1,15 +1,16 @@
 import React from 'react';
 import { Header, Title } from '../../components';
+import { Container } from '../../components/grid';
 import TransactionList from '../../components/TransactionList';
 
 const DailyTransaction = () => {
   return (
-    <div>
+    <Container>
       <Header>
         <Title>Daily Transactions </Title>
       </Header>
       <TransactionList />
-    </div>
+    </Container>
   );
 };
 

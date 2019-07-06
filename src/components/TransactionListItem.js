@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Column } from './grid';
+import CategoryIcons from './CategoryIcons';
 import styled from 'styled-components';
 
 const Payee = styled.p`
@@ -11,6 +12,13 @@ const Payee = styled.p`
   line-height: 0.8;
   letter-spacing: normal;
   color: #1c202e;
+`;
+
+const Category = styled.div`
+  background-image: url('../assets/category/eating.svg');
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
 `;
 
 const Date = styled.p`
@@ -40,7 +48,9 @@ const Amount = styled.p`
 const TransactionListItem = ({ category, payee, date, amount }) => {
   return (
     <Row center>
-      <Column>{category}</Column>
+      <Column>
+        <CategoryIcons category={category} />
+      </Column>
       <Column>
         <Payee>{payee}</Payee>
         <Date>{date}</Date>
