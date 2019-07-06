@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Main from './components/Main/Main';
-import Login from './components/Authentication/Login';
-import Register from './components/Authentication/Register';
+import Main from './views/Main/Main';
+import Login from './views/Authentication/Login';
+import Register from './views/Authentication/Register';
 import FirebaseContext from './components/Firebase/FirebaseContext';
-import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar';
 
 function App() {
   const [isInitiliazed, setIsInitiliazed] = useState(false);

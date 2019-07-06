@@ -3,6 +3,6 @@ import Label from './Label';
 import Title from './Title';
 import Input from './Input';
 import AuthImage from './AuthImage';
-import ArrowButton from './ArrowButton';
+import { ArrowButton, AddButton } from './Button';
 
-export { Header, Label, Title, Input, AuthImage, ArrowButton };
+export { Header, Label, Title, Input, AuthImage, ArrowButton, AddButton };

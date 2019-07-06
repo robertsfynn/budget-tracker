@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import FirebaseContext from '../Firebase/FirebaseContext';
-import { Container, Row, Column } from '../styles/grid';
-import { Header, Title, Label, Input, AuthImage, ArrowButton } from '../styles';
+import FirebaseContext from '../../components/Firebase/FirebaseContext';
+import { Container, Row, Column } from '../../components/grid';
+import { Header, Title, Label, Input, AuthImage, ArrowButton } from '../../components';
 
 const RegisterForm = () => {
   const [values, setValues] = useState({ name: '', email: '', password: '' });

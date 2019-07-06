@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import MonthlyBudget from './MonthlyBudget';
 import { withRouter } from 'react-router-dom';
-import FirebaseContext from '../Firebase/FirebaseContext';
-import MoneyTracker from './MoneyTracker';
+import FirebaseContext from '../../components/Firebase/FirebaseContext';
+import DailyTransaction from './DailyTransaction';
+import Navbar from '../../components/Navbar';
 
 const Main = ({ history }) => {
   const [monthlyBudget, setMonthlyBudget] = useState(true);
@@ -23,16 +24,10 @@ const Main = ({ history }) => {
   // will find a better solution than that dirty hack
 
   return (
-    <section className="section section-full-height">
-      <div className="container">
-        {typeof monthlyBudget === 'object' ? (
-          <MoneyTracker monthlyBudget={monthlyBudget} />
-        ) : null}
-        {!monthlyBudget ? (
-          <MonthlyBudget setMonthlyBudget={setMonthlyBudget} />
-        ) : null}
-      </div>
-    </section>
+    <>
+      <DailyTransaction />
+      <Navbar />
+    </>
   );
 };
 

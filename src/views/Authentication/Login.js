@@ -1,8 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import FirebaseContext from '../Firebase/FirebaseContext';
-import { Header, Title, Label, Input, AuthImage, ArrowButton } from '../styles';
-import { Container, Row, Column } from '../styles/grid';
+import FirebaseContext from '../../components/Firebase/FirebaseContext';
+import {
+  Header,
+  Title,
+  Label,
+  Input,
+  AuthImage,
+  ArrowButton,
+} from '../../components';
+import { Container, Row, Column } from '../../components/grid';
 
 const LoginForm = ({ history }) => {
   const [values, setValues] = useState({ email: '', password: '' });
@@ -11,11 +18,9 @@ const LoginForm = ({ history }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
-    console.log('submit');
-    // setIsLoading(true);
-    // await Firebase.login(values.email, values.password);
-    // history.push('/');
+    setIsLoading(true);
+    await Firebase.login(values.email, values.password);
+    history.push('/');
   };
 
   const handleChange = (e) => {

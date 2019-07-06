@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import FirebaseContext from '../Firebase/FirebaseContext';
+import FirebaseContext from '../../components/Firebase/FirebaseContext';
 
 const MonthlyBudget = ({ setMonthlyBudget }) => {
   const [values, setValues] = useState({
