@@ -71,7 +71,7 @@ const StyledAmount = styled.p`
   line-height: 0.8;
   letter-spacing: normal;
   text-align: right;
-  color: #19ea25;
+  color: #FF3378;
 `;
 
 const TransactionListItem = ({ category, payee, date, amount }) => {

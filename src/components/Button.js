@@ -3,7 +3,7 @@ import add from '../assets/navbar/add.svg';
 import styled from 'styled-components';
 
 const ArrowButton = styled.button`
-  background: url(${arrow});
+  background: url(${arrow}) no-repeat center;
   height: 16px;
   width: 10px;
   border: none;

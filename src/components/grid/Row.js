@@ -6,7 +6,6 @@ const Row = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin-bottom: 1rem;
-
   align-items: ${({ center }) => (center ? 'center' : 'initial')};
 `;
 
