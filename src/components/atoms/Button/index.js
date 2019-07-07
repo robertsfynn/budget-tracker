@@ -1,6 +1,6 @@
 import React from 'react';
-import arrow from '../../assets/arrow.svg';
-import add from '../../assets/navbar/add.svg';
+import arrow from 'assets/arrow.svg';
+import add from 'assets/navbar/add.svg';
 import styled from 'styled-components';
 
 const ArrowButton = styled.button`

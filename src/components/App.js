@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { HomePage } from './';
+import { DailyTransactionPage, LoginPage, RegisterPage } from 'components';
 import FirebaseContext from '../Firebase/FirebaseContext';
 
 function App() {
@@ -8,23 +8,19 @@ function App() {
   const Firebase = useContext(FirebaseContext);
 
   useEffect(() => {
-    console.log('hello');
     Firebase.isInitialized().then(() => {
       setIsInitiliazed(true);
     });
   }, [Firebase]);
 
-  console.log(HomePage);
-
-  return (
+  return isInitiliazed ? (
     <Router>
-      <HomePage/>
       {/* <Box /> */}
-      {/* <Route path="/" exact component={HomePage} />
+      <Route path="/" exact component={DailyTransactionPage} />
       <Route path="/login/" component={LoginPage} />
-      <Route path="/register/" component={RegisterPage} /> */}
+      <Route path="/register/" component={RegisterPage} />
     </Router>
-  );
+  ) : null;
 }
 
 export default App;

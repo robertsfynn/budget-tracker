@@ -1,7 +1,7 @@
 import React from 'react';
-import { Row, Column, AuthImage, Title, Box } from '../..';
-import { ReactComponent as IncomeIcon } from '../../assets/oval-blue.svg';
-import { ReactComponent as ExpenseIcon } from '../../assets/oval-red.svg';
+import { Row, Column, AuthImage, Title, Box } from 'components';
+import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
+import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 import styled from 'styled-components';
 
 const StyledText = styled.p`

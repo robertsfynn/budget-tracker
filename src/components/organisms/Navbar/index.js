@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Container, Row, Column, Button, NavbarItem } from '../..';
 import styled from 'styled-components';
-import FirebaseContext from '../../../Firebase/FirebaseContext';
-import DailyLogo from '../../assets/navbar/calender.svg';
+import FirebaseContext from 'Firebase/FirebaseContext';
+import DailyLogo from 'assets/navbar/calender.svg';
 
 const StyledNavbar = styled.nav`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);

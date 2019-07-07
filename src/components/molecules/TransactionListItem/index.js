@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Column, CategoryIcons } from '../..';
+import { Row, Column, CategoryIcon } from 'components';
 import styled from 'styled-components';
 
 const StyledListItem = styled.li`
@@ -79,7 +79,7 @@ const TransactionListItem = ({ category, payee, date, amount }) => {
       <Row center>
         <Column>
           <StyledCategory>
-            <CategoryIcons category={category} />
+            <CategoryIcon category={category} />
           </StyledCategory>
         </Column>
         <Column>

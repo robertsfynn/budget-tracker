@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Title, TransactionList, Container } from '../..';
+import { Header, Title, TransactionList, Container } from 'components';
 
 const DailyTransaction = () => {
   return (

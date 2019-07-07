@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import img from '../../assets/illustriations/auth.svg';
+import img from 'assets/illustriations/auth.svg';
 
 const AuthImage = styled.div`
   background: url(${img}) no-repeat center;

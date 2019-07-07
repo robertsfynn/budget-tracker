@@ -17,8 +17,7 @@ const RegisterForm = () => {
   const Firebase = useContext(FirebaseContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
-    // await Firebase.register(values.name, values.email, values.password);
+    await Firebase.register(values.name, values.email, values.password);
   };
 
   const handleChange = (e) => {
