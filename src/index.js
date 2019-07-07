@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './components/App';
 import { Normalize } from 'styled-normalize';
 import * as serviceWorker from './serviceWorker';
-import Firebase from './components/Firebase/Firebase';
-import FirebaseContext from './components/Firebase/FirebaseContext';
+import Firebase from './Firebase/Firebase';
+import FirebaseContext from './Firebase/FirebaseContext';
 import { createGlobalStyle } from 'styled-components';
 import GTWalsheimPro from './assets/fonts/GT-Walsheim-Pro-Regular.OTF';
 import GTWalsheimProBold from './assets/fonts/GT-Walsheim-Pro-Bold.OTF';
