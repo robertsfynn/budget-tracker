@@ -4,6 +4,6 @@ import Title from './Title';
 import Input from './Input';
 import AuthImage from './AuthImage';
 import Box from './Box';
-import { ArrowButton, AddButton } from './Button';
+import Button from './Button';
 
-export { Header, Label, Title, Box, Input, AuthImage, ArrowButton, AddButton };
+export { Header, Label, Title, Box, Input, AuthImage, Button };

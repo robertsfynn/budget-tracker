@@ -7,7 +7,7 @@ import {
   Label,
   Input,
   AuthImage,
-  ArrowButton,
+  Button,
 } from '../../components';
 import { Container, Row, Column } from '../../components/grid';
 
@@ -64,7 +64,7 @@ const LoginForm = ({ history }) => {
             />
           </Column>
           <Column offset="10%" size="20%">
-            <ArrowButton />
+            <Button type="arrow" />
           </Column>
         </Row>
       </form>

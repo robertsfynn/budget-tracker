@@ -1,3 +1,4 @@
+import React from 'react';
 import arrow from '../assets/arrow.svg';
 import add from '../assets/navbar/add.svg';
 import styled from 'styled-components';
@@ -29,4 +30,14 @@ const AddButton = styled.button`
   background-size: 30px;
 `;
 
-export { AddButton, ArrowButton };
+const Button = ({ type, ...props }) => {
+  switch (type) {
+    case 'arrow':
+      return <ArrowButton />;
+      break;
+    case 'add':
+      return <AddButton />;
+  }
+};
+
+export default Button;

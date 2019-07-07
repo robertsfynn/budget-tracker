@@ -9,8 +9,8 @@ const StyledBox = styled.div`
   margin: 0 0.5rem;
 `;
 
-const Box = (props) => {
-  return <StyledBox {...props}>{props.children}</StyledBox>;
+const Box = ({ children, ...props }) => {
+  return <StyledBox {...props}>{children}</StyledBox>;
 };
 
 export default Box;

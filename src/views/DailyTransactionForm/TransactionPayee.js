@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Input, ArrowButton } from '../../components';
+import { Label, Input, Button } from '../../components';
 import { Row, Column } from '../../components/grid';
 const TransactionPayee = ({ values, handleChange, nextStep }) => {
   return (
@@ -16,7 +16,7 @@ const TransactionPayee = ({ values, handleChange, nextStep }) => {
         />
       </Column>
       <Column offset="10%" size="10%">
-        <ArrowButton onClick={nextStep} />
+        <Button type="arrow" onClick={nextStep} />
       </Column>
     </Row>
   );

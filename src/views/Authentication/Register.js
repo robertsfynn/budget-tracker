@@ -1,7 +1,14 @@
 import React, { useState, useContext } from 'react';
 import FirebaseContext from '../../components/Firebase/FirebaseContext';
 import { Container, Row, Column } from '../../components/grid';
-import { Header, Title, Label, Input, AuthImage, ArrowButton } from '../../components';
+import {
+  Header,
+  Title,
+  Label,
+  Input,
+  AuthImage,
+  Button,
+} from '../../components';
 
 const RegisterForm = () => {
   const [values, setValues] = useState({ name: '', email: '', password: '' });
@@ -66,7 +73,7 @@ const RegisterForm = () => {
             />
           </Column>
           <Column offset="10%" size="20%">
-            <ArrowButton />
+            <Button type="arrow" />
           </Column>
         </Row>
       </form>

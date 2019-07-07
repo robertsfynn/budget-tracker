@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Container, Row, Column } from './grid';
-import { AddButton } from './index.js';
+import { Button } from './index.js';
 import styled from 'styled-components';
 import NavbarItem from './NavbarItem';
 import FirebaseContext from './Firebase/FirebaseContext';
@@ -45,7 +45,7 @@ const Navbar = ({ history }) => {
             <NavbarItem text="Daily" logo={DailyLogo} />
           </Column>
           <StyledDivAddButton>
-            <AddButton />
+            <Button type="add" />
           </StyledDivAddButton>
           <Column offset="20%">
             <NavbarItem text="Daily" logo={DailyLogo} />
