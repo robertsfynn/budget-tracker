@@ -3,7 +3,7 @@ import { Navbar } from 'components';
 import styled from 'styled-components';
 
 const StyledMain = styled.main`
-  padding-bottom: 13rem;
+  padding-bottom: 8rem;
 `;
 
 const PageTemplate = ({ children }) => {
