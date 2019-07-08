@@ -14,7 +14,7 @@ const index = () => {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
       preserveAspectRatio="xMidYMid"
-      class="lds-money"
+      className="lds-money"
     >
       <defs>
         <clipPath id="lds-money-cpid-880079393f298">
@@ -23,7 +23,7 @@ const index = () => {
       </defs>
       <path
         ng-attr-stroke="{{config.c4}}"
-        stroke-width="1"
+        strokeWidth="1"
         ng-attr-fill="{{config.c4}}"
         d="M85.529,75.177H14.471c-2.469,0-4.471,2.002-4.471,4.471h80C90,77.179,87.998,75.177,85.529,75.177z"
         stroke="#1c202e"
@@ -31,7 +31,7 @@ const index = () => {
       />
       <g
         ng-attr-clip-path="url(#{{config.cpid}})"
-        clip-path="url(#lds-money-cpid-880079393f298)"
+        clipPath="url(#lds-money-cpid-880079393f298)"
       >
         <g transform="translate(0 110)">
           <animateTransform
@@ -65,7 +65,7 @@ const index = () => {
       </g>
       <path
         ng-attr-stroke="{{config.c4}}"
-        stroke-width="1"
+        strokeWidth="1"
         ng-attr-fill="{{config.c4}}"
         d="M14.471,84.823h71.058c2.469,0,4.471-2.002,4.471-4.471v-0.704H10v0.704C10,82.821,12.002,84.823,14.471,84.823z"
         stroke="#1c202e"

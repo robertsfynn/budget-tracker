@@ -25,6 +25,13 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     background-color: #fcfcfc;
   } 
+  textarea,
+  input[type="text"],
+  input[type="button"],
+  input[type="submit"] {
+    appearance: none;
+    border-radius: 0;
+  }
 `;
 
 ReactDOM.render(
