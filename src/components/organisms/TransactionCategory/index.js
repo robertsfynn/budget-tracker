@@ -35,7 +35,7 @@ const TransactionCategory = ({ handleChangeBox }) => {
       });
       setCategories(categories);
     });
-  }, []);
+  }, [Firebase]);
 
   return (
     <Row>

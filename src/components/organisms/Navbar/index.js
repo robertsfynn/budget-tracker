@@ -1,13 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import {
-  FirebaseContext,
-  Container,
-  Row,
-  Column,
-  Button,
-  NavbarItem,
-} from 'components';
+import { Container, Row, Column, Button, NavbarItem } from 'components';
 import styled from 'styled-components';
 import DailyLogo from 'assets/navbar/calender.svg';
 
@@ -31,13 +24,10 @@ const StyledDivAddButton = styled.div`
 `;
 
 const Navbar = ({ history }) => {
-  const [active, setActive] = useState(false);
-  const Firebase = useContext(FirebaseContext);
-
-  const logout = async () => {
-    await Firebase.logout();
-    history.push('/login');
-  };
+  // const logout = async () => {
+  //   await Firebase.logout();
+  //   history.push('/login');
+  // };
 
   return (
     <StyledNavbar>
@@ -46,20 +36,14 @@ const Navbar = ({ history }) => {
           <Column>
             <NavbarItem text="Daily" active logo={DailyLogo} />
           </Column>
-          <Column>
-            <NavbarItem text="Daily" logo={DailyLogo} />
-          </Column>
+          <Column />
           <StyledDivAddButton>
             <Link to="/create">
               <Button type="add" />
             </Link>
           </StyledDivAddButton>
-          <Column offset="20%">
-            <NavbarItem text="Daily" logo={DailyLogo} />
-          </Column>
-          <Column>
-            <NavbarItem text="Daily" logo={DailyLogo} />
-          </Column>
+          <Column offset="20%" />
+          <Column />
         </Row>
       </Container>
     </StyledNavbar>

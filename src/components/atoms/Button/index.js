@@ -1,3 +1,4 @@
+/* eslint-disable default-case */
 import React from 'react';
 import arrow from 'assets/arrow.svg';
 import add from 'assets/navbar/add.svg';
@@ -34,7 +35,6 @@ const Button = ({ type, ...props }) => {
   switch (type) {
     case 'arrow':
       return <ArrowButton />;
-      break;
     case 'add':
       return <AddButton />;
   }

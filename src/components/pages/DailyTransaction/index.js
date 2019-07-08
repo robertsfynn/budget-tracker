@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { withRouter } from 'react-router-dom';
 import {
   PageTemplate,
   Header,
   Title,
   TransactionList,
   Container,
+  FirebaseContext,
 } from 'components';
 
-const DailyTransaction = () => {
+const DailyTransaction = ({ history }) => {
+  const Firebase = useContext(FirebaseContext);
+
+  useEffect(() => {
+    if (!Firebase.getCurrentUser()) history.push('/login');
+  }, [Firebase, history]);
   return (
     <PageTemplate>
       <Container>
@@ -20,4 +27,4 @@ const DailyTransaction = () => {
   );
 };
 
-export default DailyTransaction;
+export default withRouter(DailyTransaction);

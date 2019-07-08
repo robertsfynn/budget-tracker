@@ -7,15 +7,10 @@ import {
   NoTransactions,
 } from 'components';
 import styled from 'styled-components';
-import img from 'assets/no-transaction.png';
 
 const StyledTransactionList = styled.ul`
   padding: 0;
   margin: 0;
-`;
-
-const StyledImage = styled.img`
-  width: 172px;
 `;
 
 const TransactionList = () => {
@@ -24,7 +19,7 @@ const TransactionList = () => {
   const Firebase = useContext(FirebaseContext);
 
   useEffect(() => {
-    if (Firebase.auth.id)
+    if (Firebase.getCurrentUser())
       Firebase.getTransactions().then((querySnapshot) => {
         let transactions = [];
         let total = 0;
@@ -38,7 +33,7 @@ const TransactionList = () => {
         setTotal(total);
         setTransactions(transactions);
       });
-  }, []);
+  }, [Firebase]);
 
   return (
     <Container>

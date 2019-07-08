@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   Header,
   Title,
@@ -12,6 +12,22 @@ import {
   Column,
   FirebaseContext,
 } from 'components';
+import styled from 'styled-components';
+
+const StyledAuthText = styled.p`
+  font-family: GTWalsheimPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #ff3378;
+  float: right;
+  margin: 0;
+  padding-right: 1rem;
+`;
 
 const LoginForm = ({ history }) => {
   const [values, setValues] = useState({ email: '', password: '' });
@@ -30,11 +46,16 @@ const LoginForm = ({ history }) => {
 
   useEffect(() => {
     if (Firebase.getCurrentUser()) history.push('/');
-  }, []);
+  }, [Firebase, history]);
 
   return (
     <Container>
-      <Header>Budget Tracker</Header>
+      <Header>
+        Budget Tracker
+        <Link to="/register">
+          <StyledAuthText>Sign Up</StyledAuthText>
+        </Link>
+      </Header>
       <AuthImage />
       <Title>Login to your account</Title>
       <Row>

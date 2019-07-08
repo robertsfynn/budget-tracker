@@ -22,7 +22,7 @@ const CategoryIcon = ({ category }) => {
         setIcon(value);
       }
     });
-  }, []);
+  }, [category, iconList]);
 
   return icon;
 };

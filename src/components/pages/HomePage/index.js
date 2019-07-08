@@ -6,7 +6,7 @@ const HomePage = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
   useEffect(() => {
     if (!Firebase.getCurrentUser()) history.push('/login');
-  }, []);
+  }, [Firebase, history]);
 
   return <div />;
 };

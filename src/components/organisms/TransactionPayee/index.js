@@ -2,8 +2,6 @@ import React from 'react';
 import { FormField, Button, Row, Column } from 'components';
 import styled, { keyframes } from 'styled-components';
 import { fadeIn } from 'react-animations';
-import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
-import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 
