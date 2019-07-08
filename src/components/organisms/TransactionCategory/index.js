@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Row, Column, Box, FirebaseContext, CategoryIcon } from 'components';
+import React from 'react';
+import { Row, Column, Box, CategoryIcon, Categories } from 'components';
 import styled from 'styled-components';
 
 const StyledText = styled.p`
@@ -21,34 +21,23 @@ const StyledCategoryIcon = styled.div`
 `;
 
 const TransactionCategory = ({ handleChangeBox }) => {
-  const [categories, setCategories] = useState([]);
-  const Firebase = useContext(FirebaseContext);
-
-  useEffect(() => {
-    Firebase.getCategories().then((querySnapshot) => {
-      let categories = [];
-      querySnapshot.forEach((doc) => {
-        const category = doc.data();
-        const id = doc.id;
-
-        categories.push({ id, ...category });
-      });
-      setCategories(categories);
-    });
-  }, [Firebase]);
-
   return (
-    <Row>
-      {categories.map(({ id, title }) => (
-        <Column key={id}>
-          <Box name="category" value={title} onClick={handleChangeBox}>
-            <StyledCategoryIcon>
-              <CategoryIcon category={title} />
-            </StyledCategoryIcon>
-            <StyledText>{title}</StyledText>
-          </Box>
-        </Column>
-      ))}
+    <Row scrollable>
+      {Object.keys(Categories).map((title) => {
+        if (title === 'empty' || title === 'expense' || title === 'income') {
+          return null;
+        }
+        return (
+          <Column key={title}>
+            <Box name="category" value={title} onClick={handleChangeBox}>
+              <StyledCategoryIcon>
+                <CategoryIcon category={title} />
+              </StyledCategoryIcon>
+              <StyledText>{title}</StyledText>
+            </Box>
+          </Column>
+        );
+      })}
     </Row>
   );
 };
