@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Column } from '../..';
+import { Row, Column } from 'components';
 
 import styled from 'styled-components';
 

@@ -13,4 +13,4 @@ const Box = ({ children, ...props }) => {
   return <StyledBox {...props}>{children}</StyledBox>;
 };
 
-export { Box };
+export default Box;

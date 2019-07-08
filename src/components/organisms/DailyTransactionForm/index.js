@@ -5,7 +5,7 @@ import {
   Title,
   TransactionKind,
   TransactionPayee,
-} from '../..';
+} from 'components';
 
 const DailyTransactionForm = () => {
   const [values, setValues] = useState({

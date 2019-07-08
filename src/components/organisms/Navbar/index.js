@@ -7,7 +7,7 @@ import {
   Column,
   Button,
   NavbarItem,
-} from '../..';
+} from 'components';
 import styled from 'styled-components';
 import DailyLogo from 'assets/navbar/calender.svg';
 

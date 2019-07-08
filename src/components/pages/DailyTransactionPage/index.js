@@ -1,5 +1,11 @@
 import React from 'react';
-import { Header, Title, TransactionList, Container } from 'components';
+import {
+  Header,
+  Title,
+  TransactionList,
+  DailyTransactionForm,
+  Container,
+} from 'components';
 
 const DailyTransaction = () => {
   return (
@@ -7,7 +13,8 @@ const DailyTransaction = () => {
       <Header>
         <Title>Daily Transactions </Title>
       </Header>
-      <TransactionList />
+      {/* <TransactionList /> */}
+      <DailyTransactionForm/>
     </Container>
   );
 };

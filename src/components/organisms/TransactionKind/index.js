@@ -2,7 +2,8 @@ import React from 'react';
 import { Row, Column, AuthImage, Title, Box } from 'components';
 import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
 import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
-import styled from 'styled-components';
+import { slideInLeft } from 'react-animations';
+import styled, { keyframes } from 'styled-components';
 
 const StyledText = styled.p`
   font-family: GTWalsheimPro;
@@ -16,6 +17,8 @@ const StyledText = styled.p`
   margin-bottom: 0;
   margin-top: 3rem;
 `;
+
+
 
 const TransactionKind = ({ handleChangeBox }) => {
   return (
