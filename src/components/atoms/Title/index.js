@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const Title = styled.h2`
+const StyledTitle = styled.h2`
   font-family: GTWalsheimPro;
   font-size: 24px;
   font-weight: bold;
@@ -9,6 +10,11 @@ const Title = styled.h2`
   line-height: normal;
   letter-spacing: normal;
   color: #1c202e;
+  text-align: ${({ center }) => (center ? 'center' : '')};
 `;
+
+const Title = ({ children, ...props }) => {
+  return <StyledTitle {...props}>{children}</StyledTitle>;
+};
 
 export default Title;

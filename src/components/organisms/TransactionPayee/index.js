@@ -1,21 +1,34 @@
 import React from 'react';
-import { Label, Input, Button, Row, Column } from 'components';
+import { FormField, Button, Row, Column } from 'components';
 import styled, { keyframes } from 'styled-components';
-import { slideInLeft } from 'react-animations';
+import { fadeIn } from 'react-animations';
+import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
+import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 
-const fadeInAnimation = keyframes`${slideInLeft}`;
+const fadeInAnimation = keyframes`${fadeIn}`;
 
 const StyledForm = styled.form`
   animation: 1s ${fadeInAnimation};
 `;
 
-const TransactionPayee = ({ values, handleChange, nextStep }) => {
+const TransactionPayee = ({
+  values,
+  handleChange,
+  nextStep,
+  createListItem,
+}) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    nextStep();
+    createListItem('payee', values.payee);
+  };
+
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <Row center>
         <Column size="70%">
-          <Label>Payee name</Label>
-          <Input
+          <FormField
+            label="Payee name"
             type="text"
             name="payee"
             value={values.payee}
@@ -25,7 +38,7 @@ const TransactionPayee = ({ values, handleChange, nextStep }) => {
           />
         </Column>
         <Column offset="10%" size="10%">
-          <Button type="arrow" onClick={nextStep} />
+          <Button type="arrow" />
         </Column>
       </Row>
     </StyledForm>

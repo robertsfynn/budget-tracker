@@ -7,6 +7,12 @@ const StyledBox = styled.div`
   background-color: #ffffff;
   padding: 1.7rem;
   margin: 0 0.5rem;
+  position: relative;
+  z-index: 2;
+
+  > * {
+    pointer-events: none;
+  }
 `;
 
 const Box = ({ children, ...props }) => {

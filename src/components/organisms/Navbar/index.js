@@ -17,6 +17,7 @@ const StyledNavbar = styled.nav`
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 2;
 `;
 
 const StyledDivAddButton = styled.div`
@@ -49,7 +50,9 @@ const Navbar = ({ history }) => {
             <NavbarItem text="Daily" logo={DailyLogo} />
           </Column>
           <StyledDivAddButton>
-            <Button type="add" />
+            <Link to="/create">
+              <Button type="add" />
+            </Link>
           </StyledDivAddButton>
           <Column offset="20%">
             <NavbarItem text="Daily" logo={DailyLogo} />

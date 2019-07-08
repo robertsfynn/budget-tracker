@@ -4,12 +4,18 @@ import {
   Container,
   TransactionListItem,
   Total,
+  NoTransactions,
 } from 'components';
 import styled from 'styled-components';
+import img from 'assets/no-transaction.png';
 
 const StyledTransactionList = styled.ul`
   padding: 0;
   margin: 0;
+`;
+
+const StyledImage = styled.img`
+  width: 172px;
 `;
 
 const TransactionList = () => {
@@ -17,22 +23,21 @@ const TransactionList = () => {
   const [total, setTotal] = useState();
   const Firebase = useContext(FirebaseContext);
 
-  //TODO: if no transactions, show that u can add some!
-
   useEffect(() => {
-    Firebase.getTransactions().then((querySnapshot) => {
-      let transactions = [];
-      let total = 0;
-      querySnapshot.forEach((doc) => {
-        const transaction = doc.data();
-        const id = doc.id;
+    if (Firebase.auth.id)
+      Firebase.getTransactions().then((querySnapshot) => {
+        let transactions = [];
+        let total = 0;
+        querySnapshot.forEach((doc) => {
+          const transaction = doc.data();
+          const id = doc.id;
 
-        total += transaction.amount;
-        transactions.push({ id, ...transaction });
+          total += parseInt(transaction.amount);
+          transactions.push({ id, ...transaction });
+        });
+        setTotal(total);
+        setTransactions(transactions);
       });
-      setTotal(total);
-      setTransactions(transactions);
-    });
   }, []);
 
   return (
@@ -48,7 +53,7 @@ const TransactionList = () => {
           />
         ))}
       </StyledTransactionList>
-      <Total total={total} />
+      {total ? <Total total={total} /> : <NoTransactions />}
     </Container>
   );
 };

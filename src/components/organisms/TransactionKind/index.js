@@ -2,8 +2,7 @@ import React from 'react';
 import { Row, Column, AuthImage, Title, Box } from 'components';
 import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
 import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
-import { slideInLeft } from 'react-animations';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 
 const StyledText = styled.p`
   font-family: GTWalsheimPro;
@@ -18,9 +17,7 @@ const StyledText = styled.p`
   margin-top: 3rem;
 `;
 
-
-
-const TransactionKind = ({ handleChangeBox }) => {
+const TransactionKind = ({ handleChangeBox, addToList }) => {
   return (
     <form>
       <AuthImage height={240} />
@@ -31,7 +28,7 @@ const TransactionKind = ({ handleChangeBox }) => {
       <Row>
         <Column>
           <Box name="transaction" value="income" onClick={handleChangeBox}>
-            <IncomeIcon />
+            <IncomeIcon name="transaction" value="income" />
             <StyledText>Income</StyledText>
           </Box>
         </Column>

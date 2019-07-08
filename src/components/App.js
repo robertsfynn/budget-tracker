@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
-  DailyTransactionPage,
+  DailyTransaction,
   LoginPage,
   RegisterPage,
   FirebaseContext,
+  TransactionForm,
 } from 'components';
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
 
   return isInitiliazed ? (
     <Router>
-      {/* <Box /> */}
-      <Route path="/" exact component={DailyTransactionPage} />
+      <Route path="/" exact component={DailyTransaction} />
+      <Route path="/create" component={TransactionForm} />
       <Route path="/login/" component={LoginPage} />
       <Route path="/register/" component={RegisterPage} />
     </Router>

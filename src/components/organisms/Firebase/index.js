@@ -53,6 +53,17 @@ class Firebase {
     return monthlyBudget.data();
   }
 
+  addTransaction(transaction) {
+    const user = this.auth.currentUser.uid;
+    return this.db
+      .collection('DailyTransactions')
+      .doc()
+      .set({
+        user,
+        ...transaction,
+      });
+  }
+
   async getTransactions() {
     const user = this.auth.currentUser.uid;
     const transactions = await this.db
@@ -61,6 +72,12 @@ class Firebase {
       .get();
 
     return transactions;
+  }
+
+  async getCategories() {
+    const categories = await this.db.collection('categories').get();
+
+    return categories;
   }
 
   getCurrentUser() {
