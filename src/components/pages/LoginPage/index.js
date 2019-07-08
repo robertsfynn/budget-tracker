@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
-import FirebaseContext from '../../../Firebase/FirebaseContext';
 import {
   Header,
   Title,
@@ -11,7 +10,8 @@ import {
   Container,
   Row,
   Column,
-} from '../..';
+  FirebaseContext,
+} from 'components';
 
 const LoginForm = ({ history }) => {
   const [values, setValues] = useState({ email: '', password: '' });

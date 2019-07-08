@@ -1,7 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { DailyTransactionPage, LoginPage, RegisterPage } from 'components';
-import FirebaseContext from '../Firebase/FirebaseContext';
+import {
+  DailyTransactionPage,
+  LoginPage,
+  RegisterPage,
+  FirebaseContext,
+} from 'components';
 
 function App() {
   const [isInitiliazed, setIsInitiliazed] = useState(false);

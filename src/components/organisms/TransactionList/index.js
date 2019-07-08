@@ -1,6 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Container, TransactionListItem, Total } from 'components';
-import FirebaseContext from 'Firebase/FirebaseContext';
+import {
+  FirebaseContext,
+  Container,
+  TransactionListItem,
+  Total,
+} from 'components';
 import styled from 'styled-components';
 
 const StyledTransactionList = styled.ul`
