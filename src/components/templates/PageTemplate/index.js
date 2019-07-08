@@ -3,7 +3,7 @@ import { Navbar } from 'components';
 import styled from 'styled-components';
 
 const StyledMain = styled.main`
-  margin-bottom: 140px;
+  margin-bottom: 13rem;
 `;
 
 const PageTemplate = ({ children }) => {

@@ -5,6 +5,7 @@ import {
   TransactionListItem,
   Total,
   NoTransactions,
+  Loader,
 } from 'components';
 import styled from 'styled-components';
 
@@ -16,6 +17,7 @@ const StyledTransactionList = styled.ul`
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const [total, setTotal] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const Firebase = useContext(FirebaseContext);
 
   useEffect(() => {
@@ -32,10 +34,11 @@ const TransactionList = () => {
         });
         setTotal(total);
         setTransactions(transactions);
+        setIsLoading(false);
       });
   }, [Firebase]);
 
-  return (
+  return !isLoading ? (
     <Container>
       <StyledTransactionList>
         {transactions.map(({ id, amount, category, date, payee }) => (
@@ -50,6 +53,8 @@ const TransactionList = () => {
       </StyledTransactionList>
       {total ? <Total total={total} /> : <NoTransactions />}
     </Container>
+  ) : (
+    <Loader />
   );
 };
 
