@@ -62,7 +62,12 @@ const TransactionList = () => {
       {total ? <Total total={total} /> : <NoTransactions />}
     </Container>
   ) : (
-    <Loader />
+    <>
+      <Loader type="transactionList" />
+      <Loader type="transactionList" />
+      <Loader type="transactionList" />
+      <Loader type="transactionList" />
+    </>
   );
 };
 

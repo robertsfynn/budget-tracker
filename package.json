@@ -6,6 +6,7 @@
     "firebase": "^6.2.4",
     "react": "^16.8.6",
     "react-animations": "^1.0.0",
+    "react-content-loader": "^4.2.2",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
