@@ -5,9 +5,10 @@ import {
   TransactionListItem,
   Total,
   NoTransactions,
-  Loader,
 } from 'components';
 import styled from 'styled-components';
+import ReactPlaceholder from 'react-placeholder';
+import 'react-placeholder/lib/reactPlaceholder.css';
 
 const StyledTransactionList = styled.ul`
   padding: 0;
@@ -43,31 +44,31 @@ const TransactionList = () => {
       });
   }, [Firebase]);
 
-  return !isLoading ? (
+  return (
     <Container>
-      <StyledTransactionList>
-        {transactions.map(
-          ({ id, transaction, amount, category, date, payee }) => (
-            <TransactionListItem
-              key={id}
-              transaction={transaction}
-              category={category}
-              payee={payee}
-              date={date.toDate().toDateString()}
-              amount={amount}
-            />
-          ),
-        )}
-      </StyledTransactionList>
-      {total ? <Total total={total} /> : <NoTransactions />}
+      <ReactPlaceholder
+        showLoadingAnimation
+        type="media"
+        rows={2}
+        ready={!isLoading}
+      >
+        <StyledTransactionList>
+          {transactions.map(
+            ({ id, transaction, amount, category, date, payee }) => (
+              <TransactionListItem
+                key={id}
+                transaction={transaction}
+                category={category}
+                payee={payee}
+                date={date.toDate().toDateString()}
+                amount={amount}
+              />
+            ),
+          )}
+        </StyledTransactionList>
+        {total ? <Total total={total} /> : <NoTransactions />}
+      </ReactPlaceholder>
     </Container>
-  ) : (
-    <>
-      <Loader type="transactionList" />
-      <Loader type="transactionList" />
-      <Loader type="transactionList" />
-      <Loader type="transactionList" />
-    </>
   );
 };
 
