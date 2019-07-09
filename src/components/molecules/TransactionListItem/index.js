@@ -32,10 +32,6 @@ const StyledCategory = styled.div`
     transform: translate(-50%, -50%);
     max-width: 55px;
   }
-
-  @media (min-width: 768px) {
-    margin: 0 auto;
-  }
 `;
 
 const StyledPayee = styled.p`
@@ -77,7 +73,7 @@ const TransactionListItem = ({ category, payee, date, amount }) => {
   return (
     <StyledListItem>
       <Row center>
-        <Column md="20%">
+        <Column md="15%">
           <StyledCategory>
             <CategoryIcon category={category} />
           </StyledCategory>
