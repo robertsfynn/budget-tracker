@@ -9,6 +9,8 @@ import {
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-placeholder/lib/reactPlaceholder.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const StyledTransactionList = styled.ul`
   padding: 0;
@@ -18,6 +20,8 @@ const StyledTransactionList = styled.ul`
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const [total, setTotal] = useState();
+  const [date, setDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const Firebase = useContext(FirebaseContext);
 
@@ -44,8 +48,24 @@ const TransactionList = () => {
       });
   }, [Firebase]);
 
+  const handleChange = (date) => {
+    toggleCalendar();
+    setDate(date);
+  };
+
+  const toggleCalendar = (e) => {
+    e && e.preventDefault();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <Container>
+      <button className="example-custom-input" onClick={toggleCalendar}>
+        {date.toDateString()}
+      </button>
+      {isOpen ? (
+        <DatePicker selected={date} onChange={handleChange} withPortal inline />
+      ) : null}
       <ReactPlaceholder
         showLoadingAnimation
         type="media"
