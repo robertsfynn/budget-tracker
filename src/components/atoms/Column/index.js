@@ -5,6 +5,11 @@ const Column = styled.div`
   flex-basis: ${({ size }) => size || ''};
   max-width: ${({ size }) => size || ''};
   margin-left: ${({ offset }) => offset};
+
+  @media (min-width: 768px) {
+    flex-basis: ${({ md }) => md || ''};
+    max-width: ${({ md }) => md || ''};
+  }
 `;
 
 export default Column;

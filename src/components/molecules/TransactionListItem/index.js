@@ -77,7 +77,7 @@ const TransactionListItem = ({ category, payee, date, amount }) => {
   return (
     <StyledListItem>
       <Row center>
-        <Column>
+        <Column md="20%">
           <StyledCategory>
             <CategoryIcon category={category} />
           </StyledCategory>

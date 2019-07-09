@@ -4,7 +4,7 @@ const Container = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  max-width: 960px;
+  max-width: 768px;
   margin: 0 auto;
   padding: 0 20px;
 `;

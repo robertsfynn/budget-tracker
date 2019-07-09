@@ -26,9 +26,8 @@ const GlobalStyles = createGlobalStyle`
     background-color: #fcfcfc;
   } 
   textarea,
-  input[type="text"],
-  input[type="button"],
-  input[type="submit"] {
+  input,
+  button {
     appearance: none;
     border-radius: 0;
   }

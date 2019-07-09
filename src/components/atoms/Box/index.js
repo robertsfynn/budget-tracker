@@ -9,6 +9,7 @@ const StyledBox = styled.div`
   margin: 0 0.5rem;
   position: relative;
   z-index: 2;
+  cursor: pointer;
 
   > * {
     pointer-events: none;
