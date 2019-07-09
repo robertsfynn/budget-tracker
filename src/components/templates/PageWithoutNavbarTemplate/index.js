@@ -1,5 +1,10 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const PageTemplate = ({ children }) => <main>{children}</main>;
+const StyledMain = styled.main`
+  padding-bottom: 2rem;
+`;
+
+const PageTemplate = ({ children }) => <StyledMain>{children}</StyledMain>;
 
 export default PageTemplate;
