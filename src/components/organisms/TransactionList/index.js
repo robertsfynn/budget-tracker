@@ -29,7 +29,7 @@ const TransactionList = () => {
           const transaction = doc.data();
           const id = doc.id;
 
-          total += parseInt(transaction.amount);
+          total += parseFloat(transaction.amount);
           transactions.push({ id, ...transaction });
         });
         setTotal(total);
