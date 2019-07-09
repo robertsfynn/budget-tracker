@@ -30,6 +30,7 @@ const AddButton = styled.button`
   border-radius: 100%;
   background-size: 30px;
   cursor: pointer;
+  border: none;
 `;
 
 const Button = ({ type, ...props }) => {

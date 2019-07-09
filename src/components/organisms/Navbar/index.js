@@ -20,7 +20,7 @@ const StyledDivAddButton = styled.div`
   bottom: 30px;
   padding: 1rem;
   border-radius: 100%;
-  background-color: #fcfcfc;
+  background-color: #f3f3f3;
 `;
 
 const Navbar = ({ history }) => {
