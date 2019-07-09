@@ -14,6 +14,7 @@ const TransactionAmount = ({ values, handleChange, nextStep }) => {
           <FormField
             label="Amount"
             type="number"
+            step="any"
             name="amount"
             onChange={handleChange}
             value={values.amount}
