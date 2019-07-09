@@ -10,7 +10,7 @@ const StyledInput = styled.input`
   line-height: normal;
   letter-spacing: normal;
   color: #1c202e;
-  background-color: #fcfcfc;
+  background-color: transparent;
   border: none;
   width: 100%;
   border-bottom: solid 0.4px rgba(28, 32, 46, 0.64);
