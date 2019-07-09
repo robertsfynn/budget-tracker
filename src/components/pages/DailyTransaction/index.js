@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
   PageTemplate,
@@ -12,17 +12,18 @@ import {
 const DailyTransaction = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
 
-  useEffect(() => {
-    if (!Firebase.getCurrentUser()) history.push('/login');
-  }, [Firebase, history]);
   return (
     <PageTemplate>
-      <Container>
-        <Header>
-          <Title>Daily Transactions </Title>
-        </Header>
-        <TransactionList />
-      </Container>
+      {Firebase.getCurrentUser() ? (
+        <Container>
+          <Header>
+            <Title>Daily Transactions </Title>
+          </Header>
+          <TransactionList />
+        </Container>
+      ) : (
+        history.push('/login')
+      )}
     </PageTemplate>
   );
 };
