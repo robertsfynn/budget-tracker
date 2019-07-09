@@ -20,7 +20,7 @@ const StyledText = styled.p`
 const TransactionKind = ({ handleChangeBox, addToList }) => {
   return (
     <form>
-      <AuthImage height={240} />
+      <AuthImage height={210} />
       <Title>
         What kind of
         <br /> transaction it is?
