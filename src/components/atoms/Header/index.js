@@ -8,6 +8,7 @@ const Header = styled.div`
   margin-bottom: 2rem;
   padding-left: 2rem;
   font-family: GTWalsheimPro;
+  position: relative;
 `;
 
 export default Header;

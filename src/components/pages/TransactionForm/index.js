@@ -1,6 +1,6 @@
 /* eslint-disable default-case */
 import React, { useState, useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import {
   PageWithoutNavbarTemplate,
@@ -13,6 +13,7 @@ import {
   TransactionFormList,
   TransactionAmount,
   FirebaseContext,
+  CloseIcon,
 } from 'components';
 
 const DailyTransactionForm = ({ history }) => {
@@ -140,6 +141,9 @@ const DailyTransactionForm = ({ history }) => {
       <Container>
         <Header>
           <Title>Add Transaction</Title>
+          <Link to="/">
+            <CloseIcon />
+          </Link>
         </Header>
         <TransactionFormList list={list} />
         {currentForm}
