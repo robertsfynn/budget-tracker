@@ -29,7 +29,12 @@ const TransactionList = () => {
           const transaction = doc.data();
           const id = doc.id;
 
-          total += parseFloat(transaction.amount);
+          if (transaction.transaction === 'expense') {
+            total -= parseFloat(transaction.amount);
+          } else {
+            total += parseFloat(transaction.amount);
+          }
+
           transactions.push({ id, ...transaction });
         });
         setTotal(total);
@@ -41,15 +46,18 @@ const TransactionList = () => {
   return !isLoading ? (
     <Container>
       <StyledTransactionList>
-        {transactions.map(({ id, amount, category, date, payee }) => (
-          <TransactionListItem
-            key={id}
-            category={category}
-            payee={payee}
-            date={date.toDate().toDateString()}
-            amount={amount}
-          />
-        ))}
+        {transactions.map(
+          ({ id, transaction, amount, category, date, payee }) => (
+            <TransactionListItem
+              key={id}
+              transaction={transaction}
+              category={category}
+              payee={payee}
+              date={date.toDate().toDateString()}
+              amount={amount}
+            />
+          ),
+        )}
       </StyledTransactionList>
       {total ? <Total total={total} /> : <NoTransactions />}
     </Container>

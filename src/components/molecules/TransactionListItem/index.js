@@ -66,10 +66,17 @@ const StyledAmount = styled.p`
   line-height: 0.8;
   letter-spacing: normal;
   text-align: right;
-  color: #ff3378;
+  color: ${({ transaction }) =>
+    transaction === 'expense' ? '#ff2525' : '#19ea25'};
 `;
 
-const TransactionListItem = ({ category, payee, date, amount }) => {
+const TransactionListItem = ({
+  category,
+  transaction,
+  payee,
+  date,
+  amount,
+}) => {
   return (
     <StyledListItem>
       <Row center>
@@ -83,7 +90,7 @@ const TransactionListItem = ({ category, payee, date, amount }) => {
           <StyledDate>{date}</StyledDate>
         </Column>
         <Column>
-          <StyledAmount>{amount}€</StyledAmount>
+          <StyledAmount transaction={transaction}>{amount}€</StyledAmount>
         </Column>
       </Row>
     </StyledListItem>
