@@ -4,21 +4,21 @@
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: 0.7;
   letter-spacing: normal;
   text-align: center;
   color: #1c202e;
 }
 .react-datepicker__header {
   background-color: #ffffff;
+  border: none;
+  margin-bottom: -1rem;
 }
 .react-datepicker__day {
   opacity: 0.8;
   font-family: GTWalsheimPro;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
-  line-height: normal;
   letter-spacing: normal;
   text-align: center;
   color: #1c202e;
@@ -39,8 +39,22 @@
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
-  line-height: normal;
   letter-spacing: normal;
   text-align: center;
   color: #aeb1b8;
+}
+
+.react-datepicker__portal .react-datepicker__navigation--previous {
+  background: url(../assets/backarrow.svg) no-repeat !important;
+  height: 24px;
+  width: 24px;
+  border: none;
+}
+
+.react-datepicker__portal .react-datepicker__navigation--next {
+  background: url(../assets/backarrow.svg) no-repeat !important;
+  height: 24px;
+  width: 24px;
+  border: none;
+  transform: rotateZ(180deg);
 }

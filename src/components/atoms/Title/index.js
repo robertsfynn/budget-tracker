@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledTitle = styled.h2`
   font-family: GTWalsheimPro;
-  font-size: 24px;
+  font-size: ${({ small }) => (small ? '18px' : '24px')}
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;

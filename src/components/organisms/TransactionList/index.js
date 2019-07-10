@@ -5,6 +5,10 @@ import {
   TransactionListItem,
   Total,
   NoTransactions,
+  Title,
+  SmallHeader,
+  Arrow,
+  Row,
 } from 'components';
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
@@ -15,6 +19,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 const StyledTransactionList = styled.ul`
   padding: 0;
   margin: 0;
+`;
+
+const StyledDatePickerButton = styled.div`
+  background: #ffffff;
 `;
 
 const TransactionList = () => {
@@ -60,9 +68,14 @@ const TransactionList = () => {
 
   return (
     <Container>
-      <button className="example-custom-input" onClick={toggleCalendar}>
-        {date.toDateString()}
-      </button>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title small>
+          <Row center>
+            {date.toDateString()}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker selected={date} onChange={handleChange} withPortal inline />
       ) : null}

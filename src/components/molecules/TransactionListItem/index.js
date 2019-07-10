@@ -37,7 +37,7 @@ const StyledCategory = styled.div`
 const StyledPayee = styled.p`
   font-family: GTWalsheimPro;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.8;
@@ -60,7 +60,7 @@ const StyledDate = styled.p`
 const StyledAmount = styled.p`
   font-family: GTWalsheimPro;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.8;

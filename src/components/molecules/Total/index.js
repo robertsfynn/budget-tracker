@@ -7,7 +7,7 @@ const StyledTotalTitle = styled.p`
   opacity: 0.5;
   font-family: GTWalsheimPro;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.8;
