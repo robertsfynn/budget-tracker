@@ -18,7 +18,7 @@ const StyledSubTitle = styled.p`
 const NoTransactions = () => {
   return (
     <>
-      <AuthImage height={150} fill />
+      <AuthImage height={150} />
       <Title center>No Transactions yet</Title>
       <StyledSubTitle>
         You can add transaction by tapping the + button below

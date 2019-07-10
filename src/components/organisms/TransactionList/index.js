@@ -81,6 +81,12 @@ const TransactionList = () => {
     setIsLoading(true);
   };
 
+  // Not quite sure if thats the best way, but its the fix that you can click outside of datepicker
+  document.addEventListener('click', function(event) {
+    if (!event.target.matches('.react-datepicker__portal')) return;
+    setIsOpen(false);
+  });
+
   return (
     <Container>
       <ReactPlaceholder
