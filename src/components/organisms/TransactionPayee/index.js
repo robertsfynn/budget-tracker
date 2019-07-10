@@ -32,6 +32,7 @@ const TransactionPayee = ({
             value={values.payee}
             onChange={handleChange}
             placeholder="Enter payee name"
+            autoFocus
             required
           />
         </Column>

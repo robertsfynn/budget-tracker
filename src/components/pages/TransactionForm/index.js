@@ -21,7 +21,7 @@ const DailyTransactionForm = ({ history }) => {
     transaction: '',
     payee: '',
     category: '',
-    amount: 0,
+    amount: '',
     date: new Date(),
   });
   const [list, setList] = useState([]);

@@ -18,6 +18,7 @@ const TransactionAmount = ({ values, handleChange, nextStep }) => {
             name="amount"
             onChange={handleChange}
             value={values.amount}
+            autoFocus
             required
           />
         </Column>
