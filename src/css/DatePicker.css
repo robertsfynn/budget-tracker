@@ -58,3 +58,10 @@
   border: none;
   transform: rotateZ(180deg);
 }
+
+@media (min-width: 375px) {
+  .react-datepicker__portal .react-datepicker__day {
+    width: 3rem;
+    line-height: 3rem;
+  }
+}
