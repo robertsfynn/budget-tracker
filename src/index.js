@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import { Normalize } from 'styled-normalize';
 import * as serviceWorker from './serviceWorker';
+import './css/DatePicker.css';
 import { Firebase, FirebaseContext } from 'components';
 import { createGlobalStyle } from 'styled-components';
 import GTWalsheimPro from './assets/fonts/GT-Walsheim-Pro-Regular.OTF';
@@ -31,6 +32,7 @@ const GlobalStyles = createGlobalStyle`
     appearance: none;
     border-radius: 0;
   }
+  
 `;
 
 ReactDOM.render(

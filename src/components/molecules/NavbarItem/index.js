@@ -26,7 +26,7 @@ const StyledNavbarLogo = styled.div`
 const StyledNavbarText = styled.p`
   font-family: GTWalsheimPro;
   font-size: 9px;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
   font-stretch: normal;
   line-height: 0.78;
