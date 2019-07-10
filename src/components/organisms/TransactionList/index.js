@@ -61,7 +61,7 @@ const TransactionList = () => {
           transactions.push({ id, ...transaction });
         });
         setTransactions(transactions);
-        setTotal(total);
+        setTotal(total.toFixed(2));
         setIsLoading(false);
       });
   }, [Firebase, date]);
