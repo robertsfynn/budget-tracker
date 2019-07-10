@@ -68,6 +68,10 @@ const StyledAmount = styled.p`
   text-align: right;
   color: ${({ transaction }) =>
     transaction === 'expense' ? '#ff2525' : '#19ea25'};
+    
+  @media (min-width: 768px) {
+    padding-right: 1rem;
+  }
 `;
 
 const TransactionListItem = ({

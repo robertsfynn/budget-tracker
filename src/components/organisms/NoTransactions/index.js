@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import img from 'assets/no-transaction.png';
-import { Title } from 'components';
-
-const StyledImage = styled.img`
-  width: 172px;
-  display: block;
-  margin: 0 auto;
-`;
+import { Title, AuthImage } from 'components';
 
 const StyledSubTitle = styled.p`
   opacity: 0.6;
@@ -25,7 +18,7 @@ const StyledSubTitle = styled.p`
 const NoTransactions = () => {
   return (
     <>
-      <StyledImage src={img} alt="no tranactions yet" />
+      <AuthImage height={150} fill />
       <Title center>No Transactions yet</Title>
       <StyledSubTitle>
         You can add transaction by tapping the + button below

@@ -28,6 +28,7 @@ const StyledTotal = styled.p`
 `;
 
 const Total = ({ total }) => {
+  console.log("render")
   return (
     <Row center>
       <Column offset="30%">

@@ -64,11 +64,24 @@ class Firebase {
       });
   }
 
-  async getTransactions() {
+  transformDateToStartAndEndDate(date) {
+    const tomorrow = new Date(date);
+    tomorrow.setDate(date.getDate() + 1);
+
+    const startDate = new Date(date.toDateString());
+    const endDate = new Date(tomorrow.toDateString());
+    return { startDate, endDate };
+  }
+
+  async getTransactions(date) {
     const user = this.auth.currentUser.uid;
+    const transformedDate = this.transformDateToStartAndEndDate(date);
+
     const transactions = await this.db
       .collection('DailyTransactions')
       .where('user', '==', user)
+      .where('date', '>', transformedDate.startDate)
+      .where('date', '<', transformedDate.endDate)
       .get();
 
     return transactions;

@@ -14,6 +14,7 @@ import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-placeholder/lib/reactPlaceholder.css';
 import DatePicker from 'react-datepicker';
+import { RectShape } from 'react-placeholder/lib/placeholders';
 import 'react-datepicker/dist/react-datepicker.css';
 
 const StyledTransactionList = styled.ul`
@@ -21,9 +22,17 @@ const StyledTransactionList = styled.ul`
   margin: 0;
 `;
 
-const StyledDatePickerButton = styled.div`
-  background: #ffffff;
-`;
+const CustomPlaceholder = (
+  <RectShape
+    style={{
+      marginBottom: 30,
+      width: '100%',
+      height: '70px',
+      background: 'rgb(205, 205, 205)',
+      borderRadius: '25px',
+    }}
+  />
+);
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
@@ -34,8 +43,9 @@ const TransactionList = () => {
   const Firebase = useContext(FirebaseContext);
 
   useEffect(() => {
+    resetState();
     if (Firebase.getCurrentUser())
-      Firebase.getTransactions().then((querySnapshot) => {
+      Firebase.getTransactions(date).then((querySnapshot) => {
         let transactions = [];
         let total = 0;
         querySnapshot.forEach((doc) => {
@@ -50,11 +60,11 @@ const TransactionList = () => {
 
           transactions.push({ id, ...transaction });
         });
-        setTotal(total);
         setTransactions(transactions);
+        setTotal(total);
         setIsLoading(false);
       });
-  }, [Firebase]);
+  }, [Firebase, date]);
 
   const handleChange = (date) => {
     toggleCalendar();
@@ -66,16 +76,27 @@ const TransactionList = () => {
     setIsOpen(!isOpen);
   };
 
+  const resetState = () => {
+    setTotal();
+    setIsLoading(true);
+  };
+
   return (
     <Container>
-      <SmallHeader clickable onClick={toggleCalendar}>
-        <Title small>
-          <Row center>
-            {date.toDateString()}
-            <Arrow type="bottom" />
-          </Row>
-        </Title>
-      </SmallHeader>
+      <ReactPlaceholder
+        showLoadingAnimation
+        ready={!isLoading}
+        customPlaceholder={CustomPlaceholder}
+      >
+        <SmallHeader clickable onClick={toggleCalendar}>
+          <Title small>
+            <Row center>
+              {date.toDateString()}
+              <Arrow type="bottom" />
+            </Row>
+          </Title>
+        </SmallHeader>
+      </ReactPlaceholder>
       {isOpen ? (
         <DatePicker selected={date} onChange={handleChange} withPortal inline />
       ) : null}
@@ -85,21 +106,27 @@ const TransactionList = () => {
         rows={2}
         ready={!isLoading}
       >
-        <StyledTransactionList>
-          {transactions.map(
-            ({ id, transaction, amount, category, date, payee }) => (
-              <TransactionListItem
-                key={id}
-                transaction={transaction}
-                category={category}
-                payee={payee}
-                date={date.toDate().toDateString()}
-                amount={amount}
-              />
-            ),
-          )}
-        </StyledTransactionList>
-        {total ? <Total total={total} /> : <NoTransactions />}
+        {transactions.length ? (
+          <>
+            <StyledTransactionList>
+              {transactions.map(
+                ({ id, transaction, amount, category, date, payee }) => (
+                  <TransactionListItem
+                    key={id}
+                    transaction={transaction}
+                    category={category}
+                    payee={payee}
+                    date={date.toDate().toDateString()}
+                    amount={amount}
+                  />
+                ),
+              )}
+            </StyledTransactionList>
+            <Total total={total} />
+          </>
+        ) : (
+          <NoTransactions />
+        )}
       </ReactPlaceholder>
     </Container>
   );
