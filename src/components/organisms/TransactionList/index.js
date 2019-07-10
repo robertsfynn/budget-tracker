@@ -94,9 +94,9 @@ const TransactionList = () => {
         ready={!isLoading}
         customPlaceholder={CustomPlaceholder}
       >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title small>
-            <Row center>
+        <SmallHeader noMargin clickable onClick={toggleCalendar}>
+          <Title noMargin small>
+            <Row noMargin center>
               {date.toDateString()}
               <Arrow type="bottom" />
             </Row>

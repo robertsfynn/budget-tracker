@@ -5,10 +5,10 @@ const Header = styled.div`
   background-color: #ffffff;
   border-radius: 0 0 20px 20px;
   padding: 1rem;
-  margin-bottom: 2rem;
   padding-left: 2rem;
   font-family: GTWalsheimPro;
   position: relative;
+  margin-bottom: 1rem;
 `;
 
 export default Header;

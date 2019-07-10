@@ -21,7 +21,7 @@ const TransactionKind = ({ handleChangeBox, addToList }) => {
   return (
     <form>
       <AuthImage height={210} />
-      <Title>
+      <Title margin>
         What kind of
         <br /> transaction it is?
       </Title>

@@ -5,7 +5,7 @@ const Row = styled.div`
   flex: 0 1 auto;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin: ${({ noMargin }) => (noMargin ? '0' : '0 0 1rem 0')};
   align-items: ${({ center }) => (center ? 'center' : 'initial')};
   flex-wrap: ${({ scrollable }) => (scrollable ? 'nowrap' : '')}
   overflow: ${({ scrollable }) => (scrollable ? 'auto' : '')}

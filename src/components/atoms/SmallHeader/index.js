@@ -9,8 +9,8 @@ const StyledSmallHeader = styled.div`
   margin-bottom: 2rem;
   padding-left: 2rem;
   position: relative;
-  margin-top: -1.5rem;
   cursor: ${({ clickable }) => (clickable ? 'pointer' : 'auto')};
+  margin: ${({ noMargin }) => (noMargin ? '0' : '')};
 `;
 
 const SmallHeader = ({ children, ...props }) => {

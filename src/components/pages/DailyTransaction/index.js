@@ -17,7 +17,7 @@ const DailyTransaction = ({ history }) => {
       {Firebase.getCurrentUser() ? (
         <Container>
           <Header>
-            <Title>Daily Transactions </Title>
+            <Title noMargin>Daily Transactions </Title>
           </Header>
           <TransactionList />
         </Container>

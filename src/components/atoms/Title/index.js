@@ -11,6 +11,7 @@ const StyledTitle = styled.h2`
   letter-spacing: normal;
   color: #1c202e;
   text-align: ${({ center }) => (center ? 'center' : '')};
+  margin: ${({ margin }) => (margin ? '1rem 0 1rem 0' : '0')};
 `;
 
 const Title = ({ children, ...props }) => {
