@@ -17,30 +17,29 @@ const StyledText = styled.p`
   margin-top: 3rem;
 `;
 
-const TransactionKind = ({ handleChangeBox, addToList }) => {
-  return (
-    <form>
-      <AuthImage height={210} />
-      <Title margin>
-        What kind of
-        <br /> transaction it is?
-      </Title>
-      <Row>
-        <Column>
-          <Box name="transaction" value="income" onClick={handleChangeBox}>
-            <IncomeIcon name="transaction" value="income" />
-            <StyledText>Income</StyledText>
-          </Box>
-        </Column>
-        <Column>
-          <Box name="transaction" value="expense" onClick={handleChangeBox}>
-            <ExpenseIcon />
-            <StyledText>Expense</StyledText>
-          </Box>
-        </Column>
-      </Row>
-    </form>
-  );
-};
+const TransactionKind = ({ handleChangeBox, addToList }) => (
+  <form>
+    <AuthImage height={210} />
+    <Title margin>
+      What kind of
+      <br />
+      ransaction it is?
+    </Title>
+    <Row>
+      <Column>
+        <Box name="transaction" value="income" onClick={handleChangeBox}>
+          <IncomeIcon name="transaction" value="income" />
+          <StyledText>Income</StyledText>
+        </Box>
+      </Column>
+      <Column>
+        <Box name="transaction" value="expense" onClick={handleChangeBox}>
+          <ExpenseIcon />
+          <StyledText>Expense</StyledText>
+        </Box>
+      </Column>
+    </Row>
+  </form>
+);
 
 export default TransactionKind;

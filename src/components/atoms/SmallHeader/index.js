@@ -13,8 +13,8 @@ const StyledSmallHeader = styled.div`
   margin: ${({ noMargin }) => (noMargin ? '0' : '')};
 `;
 
-const SmallHeader = ({ children, ...props }) => {
-  return <StyledSmallHeader {...props}>{children}</StyledSmallHeader>;
-};
+const SmallHeader = ({ children, ...props }) => (
+  <StyledSmallHeader {...props}>{children}</StyledSmallHeader>
+);
 
 export default SmallHeader;

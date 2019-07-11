@@ -27,18 +27,15 @@ const StyledTotal = styled.p`
   color: #121829;
 `;
 
-const Total = ({ total }) => {
-  console.log("render")
-  return (
-    <Row center>
-      <Column offset="30%">
-        <StyledTotalTitle>Total</StyledTotalTitle>
-      </Column>
-      <Column>
-        <StyledTotal>{total}€</StyledTotal>
-      </Column>
-    </Row>
-  );
-};
+const Total = ({ total }) => (
+  <Row center>
+    <Column offset="30%">
+      <StyledTotalTitle>Total</StyledTotalTitle>
+    </Column>
+    <Column>
+      <StyledTotal>{total}€</StyledTotal>
+    </Column>
+  </Row>
+);
 
 export default Total;

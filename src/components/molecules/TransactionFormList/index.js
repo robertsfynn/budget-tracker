@@ -30,21 +30,18 @@ const StyledSubHeader = styled.h5`
   margin-top: 0;
 `;
 
-const TransactionFormList = ({ list }) => {
-  return list.map((item) => {
-    return (
-      <Row key={item.category}>
-        <Column size="15%">
-          <CategoryIcon category={item.category} />
-        </Column>
-        <Column>
-          <StyledSubHeader>{item.subheader}</StyledSubHeader>
-          <br />
-          <StyledHeader>{item.header}</StyledHeader>
-        </Column>
-      </Row>
-    );
-  });
-};
+const TransactionFormList = ({ list }) =>
+  list.map((item) => (
+    <Row key={item.category}>
+      <Column size="15%">
+        <CategoryIcon category={item.category} />
+      </Column>
+      <Column>
+        <StyledSubHeader>{item.subheader}</StyledSubHeader>
+        <br />
+        <StyledHeader>{item.header}</StyledHeader>
+      </Column>
+    </Row>
+  ));
 
 export default TransactionFormList;

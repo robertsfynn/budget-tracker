@@ -15,16 +15,14 @@ const StyledSubTitle = styled.p`
   color: #1c202e;
 `;
 
-const NoTransactions = () => {
-  return (
-    <>
-      <AuthImage height={150} />
-      <Title center>No Transactions yet</Title>
-      <StyledSubTitle>
-        You can add transaction by tapping the + button below
-      </StyledSubTitle>
-    </>
-  );
-};
+const NoTransactions = () => (
+  <>
+    <AuthImage height={150} />
+    <Title center>No Transactions yet</Title>
+    <StyledSubTitle>
+      You can add transaction by tapping the + button below
+    </StyledSubTitle>
+  </>
+);
 
 export default NoTransactions;

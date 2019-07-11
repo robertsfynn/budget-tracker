@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Row, Column, Button, NavbarItem } from 'components';
 import styled from 'styled-components';
 import DailyLogo from 'assets/navbar/calender.svg';
@@ -23,31 +23,24 @@ const StyledDivAddButton = styled.div`
   background-color: #f3f3f3;
 `;
 
-const Navbar = ({ history }) => {
-  // const logout = async () => {
-  //   await Firebase.logout();
-  //   history.push('/login');
-  // };
+const Navbar = () => (
+  <StyledNavbar>
+    <Container>
+      <Row center>
+        <Column>
+          <NavbarItem text="Daily" active logo={DailyLogo} />
+        </Column>
+        <Column />
+        <StyledDivAddButton>
+          <Link to="/create">
+            <Button type="add" />
+          </Link>
+        </StyledDivAddButton>
+        <Column offset="20%" />
+        <Column />
+      </Row>
+    </Container>
+  </StyledNavbar>
+);
 
-  return (
-    <StyledNavbar>
-      <Container>
-        <Row center>
-          <Column>
-            <NavbarItem text="Daily" active logo={DailyLogo} />
-          </Column>
-          <Column />
-          <StyledDivAddButton>
-            <Link to="/create">
-              <Button type="add" />
-            </Link>
-          </StyledDivAddButton>
-          <Column offset="20%" />
-          <Column />
-        </Row>
-      </Container>
-    </StyledNavbar>
-  );
-};
-
-export default withRouter(Navbar);
+export default Navbar;

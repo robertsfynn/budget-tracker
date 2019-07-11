@@ -20,26 +20,24 @@ const StyledCategoryIcon = styled.div`
   height: 40px;
 `;
 
-const TransactionCategory = ({ handleChangeBox }) => {
-  return (
-    <Row scrollable>
-      {Object.keys(Categories).map((title) => {
-        if (title === 'empty' || title === 'expense' || title === 'income') {
-          return null;
-        }
-        return (
-          <Column key={title}>
-            <Box name="category" value={title} onClick={handleChangeBox}>
-              <StyledCategoryIcon>
-                <CategoryIcon category={title} />
-              </StyledCategoryIcon>
-              <StyledText>{title}</StyledText>
-            </Box>
-          </Column>
-        );
-      })}
-    </Row>
-  );
-};
+const TransactionCategory = ({ handleChangeBox }) => (
+  <Row scrollable>
+    {Object.keys(Categories).map((title) => {
+      if (title === 'empty' || title === 'expense' || title === 'income') {
+        return null;
+      }
+      return (
+        <Column key={title}>
+          <Box name="category" value={title} onClick={handleChangeBox}>
+            <StyledCategoryIcon>
+              <CategoryIcon category={title} />
+            </StyledCategoryIcon>
+            <StyledText>{title}</StyledText>
+          </Box>
+        </Column>
+      );
+    })}
+  </Row>
+);
 
 export default TransactionCategory;

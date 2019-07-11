@@ -68,7 +68,7 @@ const StyledAmount = styled.p`
   text-align: right;
   color: ${({ transaction }) =>
     transaction === 'expense' ? '#ff2525' : '#19ea25'};
-    
+
   @media (min-width: 768px) {
     padding-right: 1rem;
   }
@@ -80,25 +80,23 @@ const TransactionListItem = ({
   payee,
   date,
   amount,
-}) => {
-  return (
-    <StyledListItem>
-      <Row center>
-        <Column md="15%">
-          <StyledCategory>
-            <CategoryIcon category={category} />
-          </StyledCategory>
-        </Column>
-        <Column>
-          <StyledPayee>{payee}</StyledPayee>
-          <StyledDate>{date}</StyledDate>
-        </Column>
-        <Column>
-          <StyledAmount transaction={transaction}>{amount}€</StyledAmount>
-        </Column>
-      </Row>
-    </StyledListItem>
-  );
-};
+}) => (
+  <StyledListItem>
+    <Row center>
+      <Column md="15%">
+        <StyledCategory>
+          <CategoryIcon category={category} />
+        </StyledCategory>
+      </Column>
+      <Column>
+        <StyledPayee>{payee}</StyledPayee>
+        <StyledDate>{date}</StyledDate>
+      </Column>
+      <Column>
+        <StyledAmount transaction={transaction}>{amount}€</StyledAmount>
+      </Column>
+    </Row>
+  </StyledListItem>
+);
 
 export default TransactionListItem;

@@ -42,47 +42,48 @@ const TransactionList = () => {
   const [isLoading, setIsLoading] = useState(true);
   const Firebase = useContext(FirebaseContext);
 
+  const resetState = () => {
+    setTotal();
+    setIsLoading(true);
+  };
+
   useEffect(() => {
     resetState();
-    if (Firebase.getCurrentUser())
+    if (Firebase.getCurrentUser()) {
       Firebase.getTransactions(date).then((querySnapshot) => {
-        let transactions = [];
-        let total = 0;
+        const newTransactions = [];
+        let newTotal = 0;
         querySnapshot.forEach((doc) => {
           const transaction = doc.data();
-          const id = doc.id;
+          const id = { doc };
 
           if (transaction.transaction === 'expense') {
-            total -= parseFloat(transaction.amount);
+            newTotal -= parseFloat(transaction.amount);
           } else {
-            total += parseFloat(transaction.amount);
+            newTotal += parseFloat(transaction.amount);
           }
 
-          transactions.push({ id, ...transaction });
+          newTransactions.push({ id, ...transaction });
         });
-        setTransactions(transactions);
-        setTotal(total.toFixed(2));
+        setTransactions(newTransactions);
+        setTotal(newTotal.toFixed(2));
         setIsLoading(false);
       });
+    }
   }, [Firebase, date]);
-
-  const handleChange = (date) => {
-    toggleCalendar();
-    setDate(date);
-  };
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();
     setIsOpen(!isOpen);
   };
 
-  const resetState = () => {
-    setTotal();
-    setIsLoading(true);
+  const handleChange = (newDate) => {
+    toggleCalendar();
+    setDate(newDate);
   };
 
   // Not quite sure if thats the best way, but its the fix that you can click outside of datepicker
-  document.addEventListener('click', function(event) {
+  document.addEventListener('click', (event) => {
     if (!event.target.matches('.react-datepicker__portal')) return;
     setIsOpen(false);
   });

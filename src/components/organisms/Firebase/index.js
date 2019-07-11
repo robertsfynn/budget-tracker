@@ -64,7 +64,7 @@ class Firebase {
       });
   }
 
-  transformDateToStartAndEndDate(date) {
+  static transformDateToStartAndEndDate(date) {
     const tomorrow = new Date(date);
     tomorrow.setDate(date.getDate() + 1);
 

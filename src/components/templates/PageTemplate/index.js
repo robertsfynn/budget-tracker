@@ -6,13 +6,11 @@ const StyledMain = styled.main`
   padding-bottom: 8rem;
 `;
 
-const PageTemplate = ({ children }) => {
-  return (
-    <>
-      <Navbar />
-      <StyledMain>{children}</StyledMain>
-    </>
-  );
-};
+const PageTemplate = ({ children }) => (
+  <>
+    <Navbar />
+    <StyledMain>{children}</StyledMain>
+  </>
+);
 
 export default PageTemplate;
