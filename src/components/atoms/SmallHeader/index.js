@@ -6,7 +6,7 @@ const StyledSmallHeader = styled.div`
   background-color: #ffffff;
   border-radius: 20px;
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   padding-left: 2rem;
   position: relative;
   cursor: ${({ clickable }) => (clickable ? 'pointer' : 'auto')};
