@@ -12,24 +12,19 @@ const StyledArrowIcon = styled.svg`
     'rotateZ(0)'};
 `;
 
-const ArrowIcon = ({ ...props }) => {
-  return (
-    <StyledArrowIcon
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <g fill="none" fillRule="evenodd">
-        <path d="M0 0h24v24H0z" />
-        <path
-          fill="#1D1D1D"
-          d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z"
-        />
-      </g>
-    </StyledArrowIcon>
-  );
-};
+const ArrowIcon = ({ ...props }) => (
+  <StyledArrowIcon
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+  >
+    <g fill="none" fillRule="evenodd">
+      <path d="M0 0h24v24H0z" />
+      <path fill="#1D1D1D" d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6z" />
+    </g>
+  </StyledArrowIcon>
+);
 
 export default ArrowIcon;

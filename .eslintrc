@@ -1,11 +1,8 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-unresolved": "off",
-    "object-curly-newline": "off",
-    "arrow-parens": "off",
-    "implicit-arrow-linebreak": "off"
+    "import/no-unresolved": "off"
   },
   "env": {
     "browser": true
