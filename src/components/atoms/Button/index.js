@@ -3,6 +3,7 @@ import React from 'react';
 import arrow from 'assets/arrow.svg';
 import add from 'assets/navbar/add.svg';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ArrowButton = styled.button`
   background: url(${arrow}) no-repeat center;
@@ -36,10 +37,21 @@ const AddButton = styled.button`
 const Button = ({ type, ...props }) => {
   switch (type) {
     case 'arrow':
-      return <ArrowButton />;
+      return <ArrowButton {...props} />;
     case 'add':
-      return <AddButton />;
+      return <AddButton {...props} />;
+    default:
+      return null;
   }
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+Button.defaultProps = {
+  children: null,
 };
 
 export default Button;

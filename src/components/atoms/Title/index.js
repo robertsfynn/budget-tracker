@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledTitle = styled.h2`
   font-family: GTWalsheimPro;
@@ -16,6 +17,14 @@ const StyledTitle = styled.h2`
 
 const Title = ({ children, ...props }) => {
   return <StyledTitle {...props}>{children}</StyledTitle>;
+};
+
+Title.propTypes = {
+  children: PropTypes.node,
+};
+
+Title.defaultProps = {
+  children: null,
 };
 
 export default Title;

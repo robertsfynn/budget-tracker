@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledInput = styled.input`
   font-family: GTWalsheimPro;
@@ -31,5 +32,13 @@ const StyledInput = styled.input`
 const Input = ({ children, ...props }) => (
   <StyledInput {...props}>{children}</StyledInput>
 );
+
+Input.propTypes = {
+  children: PropTypes.node,
+};
+
+Input.defaultProps = {
+  children: null,
+};
 
 export default Input;
