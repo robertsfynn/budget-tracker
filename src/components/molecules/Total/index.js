@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Column } from 'components';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledTotalTitle = styled.p`
@@ -27,15 +27,26 @@ const StyledTotal = styled.p`
   color: #121829;
 `;
 
-const Total = ({ total }) => (
-  <Row center>
-    <Column offset="30%">
-      <StyledTotalTitle>Total</StyledTotalTitle>
-    </Column>
-    <Column>
-      <StyledTotal>{total}€</StyledTotal>
-    </Column>
-  </Row>
-);
+const Total = ({ total }) => {
+  return (
+    <Row center>
+      {console.log({ total })}
+      <Column offset="30%">
+        <StyledTotalTitle>Total</StyledTotalTitle>
+      </Column>
+      <Column>
+        <StyledTotal>{total}€</StyledTotal>
+      </Column>
+    </Row>
+  );
+};
+
+Total.propTypes = {
+  total: PropTypes.string,
+};
+
+Total.defaultProps = {
+  total: '0',
+};
 
 export default Total;

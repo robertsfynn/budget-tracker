@@ -31,15 +31,15 @@ const StyledSubHeader = styled.h5`
 `;
 
 const TransactionFormList = ({ list }) =>
-  list.map((item) => (
-    <Row key={item.category}>
+  list.map(({ category, subheader, header }) => (
+    <Row key={category}>
       <Column size="15%">
-        <CategoryIcon category={item.category} />
+        <CategoryIcon category={category} />
       </Column>
       <Column>
-        <StyledSubHeader>{item.subheader}</StyledSubHeader>
+        <StyledSubHeader>{subheader}</StyledSubHeader>
         <br />
-        <StyledHeader>{item.header}</StyledHeader>
+        <StyledHeader>{header}</StyledHeader>
       </Column>
     </Row>
   ));

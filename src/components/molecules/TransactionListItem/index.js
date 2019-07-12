@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Column, CategoryIcon } from 'components';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
   list-style: none;
@@ -98,5 +99,13 @@ const TransactionListItem = ({
     </Row>
   </StyledListItem>
 );
+
+TransactionListItem.propTypes = {
+  category: PropTypes.string.isRequired,
+  transaction: PropTypes.string.isRequired,
+  payee: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+};
 
 export default TransactionListItem;

@@ -11,6 +11,15 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERID,
 };
 
+const transformDateToStartAndEndDate = (date) => {
+  const tomorrow = new Date(date);
+  tomorrow.setDate(date.getDate() + 1);
+
+  const startDate = new Date(date.toDateString());
+  const endDate = new Date(tomorrow.toDateString());
+  return { startDate, endDate };
+};
+
 class Firebase {
   constructor() {
     firebase.initializeApp(config);
@@ -64,18 +73,9 @@ class Firebase {
       });
   }
 
-  static transformDateToStartAndEndDate(date) {
-    const tomorrow = new Date(date);
-    tomorrow.setDate(date.getDate() + 1);
-
-    const startDate = new Date(date.toDateString());
-    const endDate = new Date(tomorrow.toDateString());
-    return { startDate, endDate };
-  }
-
   async getTransactions(date) {
     const user = this.auth.currentUser.uid;
-    const transformedDate = this.transformDateToStartAndEndDate(date);
+    const transformedDate = transformDateToStartAndEndDate(date);
 
     const transactions = await this.db
       .collection('DailyTransactions')

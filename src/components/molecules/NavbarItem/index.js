@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledNavbarItem = styled.div`
   padding-top: 1rem;
@@ -39,9 +40,15 @@ const NavbarItem = ({ text, logo, active }) => {
   return (
     <StyledNavbarItem active={active}>
       <StyledNavbarLogo active logo={logo} />
-      <StyledNavbarText>{text} </StyledNavbarText>
+      <StyledNavbarText>{text}</StyledNavbarText>
     </StyledNavbarItem>
   );
+};
+
+NavbarItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  logo: PropTypes.node.isRequired,
+  active: PropTypes.bool.isRequired,
 };
 
 export default NavbarItem;

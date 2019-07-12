@@ -47,6 +47,7 @@ const TransactionList = () => {
     setIsLoading(true);
   };
 
+  // Needs Refactoring
   useEffect(() => {
     resetState();
     if (Firebase.getCurrentUser()) {
@@ -55,7 +56,7 @@ const TransactionList = () => {
         let newTotal = 0;
         querySnapshot.forEach((doc) => {
           const transaction = doc.data();
-          const id = { doc };
+          const { id } = doc;
 
           if (transaction.transaction === 'expense') {
             newTotal -= parseFloat(transaction.amount);
