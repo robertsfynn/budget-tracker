@@ -30,7 +30,6 @@ const StyledTotal = styled.p`
 const Total = ({ total }) => {
   return (
     <Row center>
-      {console.log({ total })}
       <Column offset="30%">
         <StyledTotalTitle>Total</StyledTotalTitle>
       </Column>
