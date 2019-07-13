@@ -9,7 +9,7 @@ import {
   FirebaseContext,
 } from 'components';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import DailyLogo from 'assets/navbar/calender.svg';
 import ProfileLogo from 'assets/navbar/profile.svg';
 
@@ -29,7 +29,7 @@ const StyledDivAddButton = styled.div`
   bottom: 30px;
   padding: 1rem;
   border-radius: 100%;
-  background-color: #f3f3f3;
+  background-color: #f0f0f0;
 `;
 
 const Navbar = ({ history }) => {

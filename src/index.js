@@ -24,7 +24,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, body, #root, .App {
     height: 100%;
-    background-color: #f3f3f3;
+    background-color: #f0f0f0;
   } 
   textarea,
   input,
