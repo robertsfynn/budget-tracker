@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Column, Box, CategoryIcon, Categories } from 'components';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledText = styled.p`
   font-family: GTWalsheimPro;
@@ -39,5 +40,9 @@ const TransactionCategory = ({ handleChangeBox }) => (
     })}
   </Row>
 );
+
+TransactionCategory.propTypes = {
+  handleChangeBox: PropTypes.func.isRequired,
+};
 
 export default TransactionCategory;

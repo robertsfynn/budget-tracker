@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormField, Button, Row, Column } from 'components';
+import PropTypes from 'prop-types';
 
 const TransactionAmount = ({ values, handleChange, nextStep }) => {
   const handleSubmit = (e) => {
@@ -28,6 +29,18 @@ const TransactionAmount = ({ values, handleChange, nextStep }) => {
       </Row>
     </form>
   );
+};
+
+TransactionAmount.propTypes = {
+  values: PropTypes.PropTypes.shape({
+    transaction: PropTypes.string,
+    payee: PropTypes.string,
+    category: PropTypes.string,
+    amount: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired,
 };
 
 export default TransactionAmount;

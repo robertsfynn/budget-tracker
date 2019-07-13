@@ -2,6 +2,7 @@ import React from 'react';
 import { FormField, Button, Row, Column } from 'components';
 import styled, { keyframes } from 'styled-components';
 import { fadeIn } from 'react-animations';
+import PropTypes from 'prop-types';
 
 const fadeInAnimation = keyframes`${fadeIn}`;
 
@@ -42,6 +43,19 @@ const TransactionPayee = ({
       </Row>
     </StyledForm>
   );
+};
+
+TransactionPayee.propTypes = {
+  values: PropTypes.shape({
+    transaction: PropTypes.string,
+    payee: PropTypes.string,
+    category: PropTypes.string,
+    amount: PropTypes.string,
+    date: PropTypes.instanceOf(Date),
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
+  nextStep: PropTypes.func.isRequired,
+  createListItem: PropTypes.func.isRequired,
 };
 
 export default TransactionPayee;

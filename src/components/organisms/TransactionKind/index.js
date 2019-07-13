@@ -3,6 +3,7 @@ import { Row, Column, AuthImage, Title, Box } from 'components';
 import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
 import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledText = styled.p`
   font-family: GTWalsheimPro;
@@ -17,7 +18,7 @@ const StyledText = styled.p`
   margin-top: 3rem;
 `;
 
-const TransactionKind = ({ handleChangeBox, addToList }) => (
+const TransactionKind = ({ handleChangeBox }) => (
   <form>
     <AuthImage height={210} />
     <Title margin>
@@ -41,5 +42,9 @@ const TransactionKind = ({ handleChangeBox, addToList }) => (
     </Row>
   </form>
 );
+
+TransactionKind.propTypes = {
+  handleChangeBox: PropTypes.func.isRequired,
+};
 
 export default TransactionKind;

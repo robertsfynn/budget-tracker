@@ -37,7 +37,7 @@ const CustomPlaceholder = (
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);
   const [total, setTotal] = useState();
-  const [date, setDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const Firebase = useContext(FirebaseContext);
@@ -51,7 +51,7 @@ const TransactionList = () => {
   useEffect(() => {
     resetState();
     if (Firebase.getCurrentUser()) {
-      Firebase.getTransactions(date).then((querySnapshot) => {
+      Firebase.getTransactions(currentDate).then((querySnapshot) => {
         const newTransactions = [];
         let newTotal = 0;
         querySnapshot.forEach((doc) => {
@@ -71,7 +71,7 @@ const TransactionList = () => {
         setIsLoading(false);
       });
     }
-  }, [Firebase, date]);
+  }, [Firebase, currentDate]);
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();
@@ -80,7 +80,7 @@ const TransactionList = () => {
 
   const handleChange = (newDate) => {
     toggleCalendar();
-    setDate(newDate);
+    setCurrentDate(newDate);
   };
 
   // Not quite sure if thats the best way, but its the fix that you can click outside of datepicker
@@ -99,14 +99,19 @@ const TransactionList = () => {
         <SmallHeader clickable onClick={toggleCalendar}>
           <Title noMargin small>
             <Row noMargin center>
-              {date.toDateString()}
+              {currentDate.toDateString()}
               <Arrow type="bottom" />
             </Row>
           </Title>
         </SmallHeader>
       </ReactPlaceholder>
       {isOpen ? (
-        <DatePicker selected={date} onChange={handleChange} withPortal inline />
+        <DatePicker
+          selected={currentDate}
+          onChange={handleChange}
+          withPortal
+          inline
+        />
       ) : null}
       <ReactPlaceholder
         showLoadingAnimation

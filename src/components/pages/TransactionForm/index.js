@@ -88,7 +88,7 @@ const TransactionForm = ({ history }) => {
   };
 
   const handleSubmit = async () => {
-    Firebase.addTransaction(values);
+    await Firebase.addTransaction(values);
     history.push('/');
   };
 
@@ -133,8 +133,9 @@ const TransactionForm = ({ history }) => {
         />
       );
       break;
-    case 5:
+    case 5: {
       handleSubmit();
+    }
   }
 
   return (
