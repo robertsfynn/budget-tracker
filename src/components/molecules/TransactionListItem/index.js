@@ -1,11 +1,13 @@
 import React from 'react';
 import { Row, Column, CategoryIcon } from 'components';
+import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
   list-style: none;
   position: relative;
+  cursor: pointer;
 
   :before {
     content: '';
@@ -81,31 +83,44 @@ const TransactionListItem = ({
   payee,
   date,
   amount,
-}) => (
-  <StyledListItem>
-    <Row center>
-      <Column md="15%">
-        <StyledCategory>
-          <CategoryIcon category={category} />
-        </StyledCategory>
-      </Column>
-      <Column>
-        <StyledPayee>{payee}</StyledPayee>
-        <StyledDate>{date}</StyledDate>
-      </Column>
-      <Column>
-        <StyledAmount transaction={transaction}>{amount}€</StyledAmount>
-      </Column>
-    </Row>
-  </StyledListItem>
-);
+  id,
+  history,
+}) => {
+  const handleClick = () => {
+    history.push({
+      pathname: '/create',
+      state: { id, category, payee, date: new Date(date), amount },
+    });
+  };
+
+  return (
+    <StyledListItem onClick={handleClick}>
+      <Row center>
+        <Column md="15%">
+          <StyledCategory>
+            <CategoryIcon category={category} />
+          </StyledCategory>
+        </Column>
+        <Column>
+          <StyledPayee>{payee}</StyledPayee>
+          <StyledDate>{date.toDateString()}</StyledDate>
+        </Column>
+        <Column>
+          <StyledAmount transaction={transaction}>{amount}€</StyledAmount>
+        </Column>
+      </Row>
+    </StyledListItem>
+  );
+};
 
 TransactionListItem.propTypes = {
   category: PropTypes.string.isRequired,
   transaction: PropTypes.string.isRequired,
   payee: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
   amount: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-export default TransactionListItem;
+export default withRouter(TransactionListItem);

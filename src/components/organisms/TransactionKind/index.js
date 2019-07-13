@@ -24,7 +24,7 @@ const TransactionKind = ({ handleChangeBox }) => (
     <Title margin>
       What kind of
       <br />
-      ransaction it is?
+      transaction it is?
     </Title>
     <Row>
       <Column>

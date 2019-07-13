@@ -126,10 +126,11 @@ const TransactionList = () => {
                 ({ id, transaction, amount, category, date, payee }) => (
                   <TransactionListItem
                     key={id}
+                    id={id}
                     transaction={transaction}
                     category={category}
                     payee={payee}
-                    date={date.toDate().toDateString()}
+                    date={date.toDate()}
                     amount={amount}
                   />
                 ),

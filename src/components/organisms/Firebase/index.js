@@ -73,6 +73,19 @@ class Firebase {
       });
   }
 
+  editTransaction(transaction) {
+    const user = this.auth.currentUser.uid;
+    const { id, ...transactionWithoutID } = transaction;
+
+    return this.db
+      .collection('DailyTransactions')
+      .doc(id)
+      .set({
+        user,
+        ...transactionWithoutID,
+      });
+  }
+
   async getTransactions(date) {
     const user = this.auth.currentUser.uid;
     const transformedDate = transformDateToStartAndEndDate(date);

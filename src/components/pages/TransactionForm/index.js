@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import {
@@ -17,7 +17,7 @@ import {
 } from 'components';
 import PropTypes from 'prop-types';
 
-const TransactionForm = ({ history }) => {
+const TransactionForm = ({ history, location }) => {
   const [values, setValues] = useState({
     transaction: '',
     payee: '',
@@ -33,6 +33,12 @@ const TransactionForm = ({ history }) => {
   const nextStep = () => {
     setStep(step + 1);
   };
+
+  useEffect(() => {
+    if (location.state) {
+      setValues({ ...location.state });
+    }
+  }, [location.state]);
 
   const createListItem = (name, value) => {
     switch (name) {
@@ -92,6 +98,11 @@ const TransactionForm = ({ history }) => {
     history.push('/');
   };
 
+  const handleEdit = async () => {
+    await Firebase.editTransaction(values);
+    history.push('/');
+  };
+
   switch (step) {
     case 1:
       currentForm = (
@@ -134,7 +145,11 @@ const TransactionForm = ({ history }) => {
       );
       break;
     case 5: {
-      handleSubmit();
+      if (values.id) {
+        handleEdit();
+      } else {
+        handleSubmit();
+      }
     }
   }
 
