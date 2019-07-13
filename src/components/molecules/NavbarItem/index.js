@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const StyledNavbarItem = styled.div`
   padding-top: 1rem;
   position: relative;
+  cursor: pointer;
 
   :before {
     content: '';
@@ -48,7 +49,11 @@ const NavbarItem = ({ text, logo, active }) => {
 NavbarItem.propTypes = {
   text: PropTypes.string.isRequired,
   logo: PropTypes.node.isRequired,
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.bool,
+};
+
+NavbarItem.defaultProps = {
+  active: false,
 };
 
 export default NavbarItem;
