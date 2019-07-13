@@ -57,7 +57,7 @@ const LoginForm = ({ history }) => {
         </Link>
       </Header>
       <AuthImage />
-      <Title>Login to your account</Title>
+      <Title margin>Login to your account</Title>
       <Row>
         <Column>
           <Label>Email</Label>

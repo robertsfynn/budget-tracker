@@ -56,7 +56,7 @@ const RegisterForm = ({ history }) => {
         </Link>
       </Header>
       <AuthImage />
-      <Title>Sign up To Budget tracker</Title>
+      <Title margin>Sign up To Budget tracker</Title>
       <Row>
         <Column>
           <Label>Name</Label>
