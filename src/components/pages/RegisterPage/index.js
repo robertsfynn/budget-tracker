@@ -13,6 +13,7 @@ import {
   AuthImage,
   Button,
 } from 'components';
+import PropTypes from 'prop-types';
 
 const StyledAuthText = styled.p`
   font-family: GTWalsheimPro;
@@ -103,6 +104,10 @@ const RegisterForm = ({ history }) => {
       </form>
     </Container>
   );
+};
+
+RegisterForm.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(RegisterForm);

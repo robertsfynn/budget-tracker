@@ -15,8 +15,9 @@ import {
   FirebaseContext,
   CloseIcon,
 } from 'components';
+import PropTypes from 'prop-types';
 
-const DailyTransactionForm = ({ history }) => {
+const TransactionForm = ({ history }) => {
   const [values, setValues] = useState({
     transaction: '',
     payee: '',
@@ -29,7 +30,7 @@ const DailyTransactionForm = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
   let currentForm;
 
-  const nextStep = (e) => {
+  const nextStep = () => {
     setStep(step + 1);
   };
 
@@ -152,4 +153,8 @@ const DailyTransactionForm = ({ history }) => {
   );
 };
 
-export default withRouter(DailyTransactionForm);
+TransactionForm.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+export default withRouter(TransactionForm);

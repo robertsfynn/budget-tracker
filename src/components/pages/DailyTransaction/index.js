@@ -8,6 +8,7 @@ import {
   Container,
   FirebaseContext,
 } from 'components';
+import PropTypes from 'prop-types';
 
 const DailyTransaction = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
@@ -26,6 +27,10 @@ const DailyTransaction = ({ history }) => {
       )}
     </PageTemplate>
   );
+};
+
+DailyTransaction.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(DailyTransaction);

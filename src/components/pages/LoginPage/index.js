@@ -13,6 +13,7 @@ import {
   FirebaseContext,
 } from 'components';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledAuthText = styled.p`
   font-family: GTWalsheimPro;
@@ -91,6 +92,10 @@ const LoginForm = ({ history }) => {
       </form>
     </Container>
   );
+};
+
+LoginForm.propTypes = {
+  history: PropTypes.object.isRequired,
 };
 
 export default withRouter(LoginForm);
