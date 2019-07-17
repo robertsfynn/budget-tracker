@@ -171,6 +171,7 @@ const TransactionForm = ({ history, location }) => {
 
 TransactionForm.propTypes = {
   history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(TransactionForm);
