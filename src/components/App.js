@@ -6,6 +6,7 @@ import {
   RegisterPage,
   FirebaseContext,
   TransactionForm,
+  BudgetPage,
 } from 'components';
 
 function App() {
@@ -22,8 +23,9 @@ function App() {
     <Router>
       <Route path="/" exact component={DailyTransaction} />
       <Route path="/create" component={TransactionForm} />
-      <Route path="/login/" component={LoginPage} />
-      <Route path="/register/" component={RegisterPage} />
+      <Route path="/budget" component={BudgetPage} />
+      <Route path="/login" component={LoginPage} />
+      <Route path="/register" component={RegisterPage} />
     </Router>
   ) : null;
 }
