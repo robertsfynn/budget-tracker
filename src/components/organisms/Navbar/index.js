@@ -9,9 +9,10 @@ import {
   FirebaseContext,
 } from 'components';
 import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import DailyLogo from 'assets/navbar/calender.svg';
 import ProfileLogo from 'assets/navbar/profile.svg';
+import BudgetLogo from 'assets/navbar/budget.svg';
 
 const StyledNavbar = styled.nav`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
@@ -38,6 +39,7 @@ const Navbar = ({ history }) => {
     await Firebase.logout();
     history.push('/login');
   };
+
   return (
     <StyledNavbar>
       <Container>
@@ -45,7 +47,9 @@ const Navbar = ({ history }) => {
           <Column>
             <NavbarItem text="Daily" active logo={DailyLogo} />
           </Column>
-          <Column />
+          <Column>
+            <NavbarItem text="Budget" logo={BudgetLogo} />
+          </Column>
           <StyledDivAddButton>
             <Link to="/create">
               <Button type="add" />
