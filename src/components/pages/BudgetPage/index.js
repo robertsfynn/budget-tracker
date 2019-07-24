@@ -5,7 +5,7 @@ const BudgetPage = () => {
   return (
     <PageTemplate>
       <Header>
-        <Title noMargin>Daily Transactions </Title>
+        <Title noMargin>Budget </Title>
       </Header>
     </PageTemplate>
   );

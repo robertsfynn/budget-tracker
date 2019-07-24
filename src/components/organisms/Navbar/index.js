@@ -45,10 +45,9 @@ const Navbar = ({ history }) => {
     <StyledNavbar>
       <Container>
         <Row center>
-          
           <Column>
             <Link exact to="/">
-              <NavbarItem text="Daily" active logo={DailyLogo} />
+              <NavbarItem text="Daily" logo={DailyLogo} />
             </Link>
           </Column>
           <Column>
