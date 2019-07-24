@@ -7,6 +7,7 @@ import {
   FirebaseContext,
   TransactionForm,
   BudgetPage,
+  BudgetForm,
 } from 'components';
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
     <Router>
       <Route path="/" exact component={DailyTransaction} />
       <Route path="/create" component={TransactionForm} />
-      <Route path="/budget" component={BudgetPage} />
+      <Route path="/budget" exact component={BudgetPage} />
+      <Route path="/budget/create" component={BudgetForm} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
     </Router>
