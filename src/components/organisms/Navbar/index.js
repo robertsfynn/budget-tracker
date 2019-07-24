@@ -41,48 +41,12 @@ const Navbar = ({ history }) => {
     history.push('/login');
   };
 
-  const navbarItems = [
-    {
-      id: 1,
-      title: 'Daily',
-      logo: DailyLogo,
-      to: '/',
-    },
-    {
-      id: 2,
-      title: 'Budget',
-      logo: BudgetLogo,
-      to: '/budget',
-    },
-    {
-      id: 3,
-      title: '',
-      logo: '',
-      to: '',
-    },
-    {
-      id: 4,
-      title: 'Logout',
-      logo: ProfileLogo,
-      to: '/',
-      onClick: logout,
-    },
-  ];
-
   return (
     <StyledNavbar>
       <Container>
         <Row center>
-          {navbarItems.map(({ id, title, logo, to, onClick }) => {
-            return (
-              <Column key={id} onClick={() => {}}>
-                <Link to={to} onClick={onClick}>
-                  <NavbarItem text={title} logo={logo} />
-                </Link>
-              </Column>
-            );
-          })}
-          {/* <Column>
+          
+          <Column>
             <Link exact to="/">
               <NavbarItem text="Daily" active logo={DailyLogo} />
             </Link>
@@ -96,7 +60,7 @@ const Navbar = ({ history }) => {
           <Column offset="20%" />
           <Column onClick={logout}>
             <NavbarItem text="Logout" logo={ProfileLogo} />
-          </Column> */}
+          </Column>
           <StyledDivAddButton>
             <Link to="/create">
               <Button type="add" />

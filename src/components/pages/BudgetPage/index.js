@@ -1,8 +1,14 @@
 import React from 'react';
-import { PageTemplate } from 'components';
+import { PageTemplate, Header, Title } from 'components';
 
 const BudgetPage = () => {
-  return <PageTemplate />;
+  return (
+    <PageTemplate>
+      <Header>
+        <Title noMargin>Daily Transactions </Title>
+      </Header>
+    </PageTemplate>
+  );
 };
 
 export default BudgetPage;
