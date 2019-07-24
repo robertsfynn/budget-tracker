@@ -1,12 +1,15 @@
 import React from 'react';
-import { PageTemplate, Header, Title } from 'components';
+import { Container, BudgetList, PageTemplate, Header, Title } from 'components';
 
 const BudgetPage = () => {
   return (
     <PageTemplate>
-      <Header>
-        <Title noMargin>Budget </Title>
-      </Header>
+      <Container>
+        <Header>
+          <Title noMargin>Budget</Title>
+        </Header>
+        <BudgetList />
+      </Container>
     </PageTemplate>
   );
 };

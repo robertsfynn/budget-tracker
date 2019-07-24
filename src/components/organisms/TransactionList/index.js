@@ -12,10 +12,10 @@ import {
 } from 'components';
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
-import 'react-placeholder/lib/reactPlaceholder.css';
 import DatePicker from 'react-datepicker';
 import { RectShape } from 'react-placeholder/lib/placeholders';
 import 'react-datepicker/dist/react-datepicker.css';
+import 'react-placeholder/lib/reactPlaceholder.css';
 
 const StyledTransactionList = styled.ul`
   padding: 0;

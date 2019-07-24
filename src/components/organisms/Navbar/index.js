@@ -46,7 +46,7 @@ const Navbar = ({ history }) => {
       <Container>
         <Row center>
           <Column>
-            <Link exact to="/">
+            <Link to="/">
               <NavbarItem text="Daily" logo={DailyLogo} />
             </Link>
           </Column>
