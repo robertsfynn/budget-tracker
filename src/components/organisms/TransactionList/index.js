@@ -27,7 +27,7 @@ const CustomPlaceholder = (
     style={{
       marginBottom: 30,
       width: '100%',
-      height: '70px',
+      height: '30px',
       background: 'rgb(205, 205, 205)',
       borderRadius: '25px',
     }}
