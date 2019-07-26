@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Arrow, SmallHeader, Title, Row } from 'components';
+import {
+  Container,
+  Arrow,
+  SmallHeader,
+  Title,
+  Row,
+  BudgetBox,
+} from 'components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
 import { RectShape } from 'react-placeholder/lib/placeholders';
@@ -68,6 +75,7 @@ const BudgetList = () => {
           inline
         />
       ) : null}
+      <BudgetBox />
     </Container>
   );
 };
