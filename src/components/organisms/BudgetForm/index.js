@@ -58,6 +58,7 @@ const BudgetForm = () => {
 
   const handleChange = (e) => {
     const name = e.target.getAttribute('name');
+    // Check if the value comes from the box or from an actual input
     const value = e.target.getAttribute('value')
       ? e.target.getAttribute('value')
       : e.target.value;
