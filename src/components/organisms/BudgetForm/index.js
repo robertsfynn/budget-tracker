@@ -1,5 +1,5 @@
 /* eslint-disable prefer-destructuring */
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   Container,
   Row,
@@ -12,9 +12,10 @@ import {
   PageWithoutNavbarTemplate,
   Header,
   Title,
+  FirebaseContext,
   CloseIcon,
 } from 'components';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -49,9 +50,10 @@ const StyledCategoryIcon = styled.div`
   height: 40px;
 `;
 
-const BudgetForm = () => {
+const BudgetForm = ({ history }) => {
+  const Firebase = useContext(FirebaseContext);
   const [values, setValues] = useState({
-    category: '',
+    category: 'car',
     budgetName: '',
     budget: '',
   });
@@ -66,7 +68,11 @@ const BudgetForm = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await Firebase.addBudget(values);
+    history.push('/budget');
+  };
 
   return (
     <PageWithoutNavbarTemplate>
@@ -135,4 +141,4 @@ const BudgetForm = () => {
   );
 };
 
-export default BudgetForm;
+export default withRouter(BudgetForm);

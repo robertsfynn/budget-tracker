@@ -48,20 +48,6 @@ class Firebase {
     });
   }
 
-  setMonthlyBudget(monthlyBudget) {
-    return this.db.doc(`monthlyBudget/${this.auth.currentUser.uid}`).set({
-      ...monthlyBudget,
-    });
-  }
-
-  async getMonthlyBudget() {
-    const monthlyBudget = await this.db
-      .doc(`monthlyBudget/${this.auth.currentUser.uid}`)
-      .get();
-
-    return monthlyBudget.data();
-  }
-
   addTransaction(transaction) {
     const user = this.auth.currentUser.uid;
     return this.db
@@ -98,6 +84,17 @@ class Firebase {
       .get();
 
     return transactions;
+  }
+
+  addBudget(budget) {
+    const user = this.auth.currentUser.uid;
+    return this.db
+      .collection('Budget')
+      .doc()
+      .set({
+        user,
+        ...budget,
+      });
   }
 
   async getCategories() {
