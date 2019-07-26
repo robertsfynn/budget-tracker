@@ -41,7 +41,7 @@ const StyledHeader = styled.h4`
   line-height: 0.7;
   letter-spacing: normal;
   color: #121829;
-  margin-top: 0;
+  margin-top: 3rem;
   text-transform: capitalize;
 `;
 
@@ -66,7 +66,7 @@ const BudgetForm = () => {
     setValues({ ...values, [name]: value });
   };
 
-  console.log(values);
+  const handleSubmit = () => {};
 
   return (
     <PageWithoutNavbarTemplate>
@@ -78,51 +78,53 @@ const BudgetForm = () => {
           </Link>
         </Header>
         <StyledHeader>Choose category</StyledHeader>
-        <Row scrollable>
-          {Object.keys(Categories).map((title) => {
-            if (
-              title === 'empty' ||
-              title === 'expense' ||
-              title === 'income'
-            ) {
-              return null;
-            }
-            return (
-              <Column key={title}>
-                <Box name="category" onClick={handleChange} value={title}>
-                  <StyledCategoryIcon>
-                    <CategoryIcon category={title} />
-                  </StyledCategoryIcon>
-                  <StyledText>{title}</StyledText>
-                </Box>
-              </Column>
-            );
-          })}
-        </Row>
-        <Row>
-          <FormField
-            label="Budget Name"
-            type="string"
-            name="budgetName"
-            required
-            onChange={handleChange}
-          />
-        </Row>
-        <Row center>
-          <Column size="70%">
+        <form onSubmit={handleSubmit}>
+          <Row scrollable>
+            {Object.keys(Categories).map((title) => {
+              if (
+                title === 'empty' ||
+                title === 'expense' ||
+                title === 'income'
+              ) {
+                return null;
+              }
+              return (
+                <Column key={title}>
+                  <Box active name="category" onClick={handleChange} value={title}>
+                    <StyledCategoryIcon>
+                      <CategoryIcon category={title} />
+                    </StyledCategoryIcon>
+                    <StyledText>{title}</StyledText>
+                  </Box>
+                </Column>
+              );
+            })}
+          </Row>
+          <Row>
             <FormField
-              label="Enter Budget"
-              type="number"
-              step="any"
-              name="budget"
-              onChange={handleChange}
+              label="Budget Name"
+              type="string"
+              name="budgetName"
               required
+              onChange={handleChange}
             />
-          </Column>
-          <Column offset="10%" size="10%">
-            <Button type="arrow" />
-          </Column>
-        </Row>
+          </Row>
+          <Row center>
+            <Column size="70%">
+              <FormField
+                label="Enter Budget"
+                type="number"
+                step="any"
+                name="budget"
+                onChange={handleChange}
+                required
+              />
+            </Column>
+            <Column offset="10%" size="10%">
+              <Button type="arrow" />
+            </Column>
+          </Row>
+        </form>
       </Container>
     </PageWithoutNavbarTemplate>
   );
