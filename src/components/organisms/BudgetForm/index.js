@@ -90,7 +90,12 @@ const BudgetForm = () => {
               }
               return (
                 <Column key={title}>
-                  <Box active name="category" onClick={handleChange} value={title}>
+                  <Box
+                    active={values.category === title}
+                    name="category"
+                    onClick={handleChange}
+                    value={title}
+                  >
                     <StyledCategoryIcon>
                       <CategoryIcon category={title} />
                     </StyledCategoryIcon>

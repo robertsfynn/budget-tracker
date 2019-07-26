@@ -8,12 +8,20 @@ const StyledBox = styled.div`
   background-color: #ffffff;
   padding: 1.7rem;
   margin-right: 1rem;
+  margin-bottom: 1.5rem;
   position: relative;
   z-index: 2;
   cursor: pointer;
 
+  border: ${({ active }) =>
+    active ? 'solid 2px #ff3378' : ' solid 2px #ffffff'};
+
   > * {
     pointer-events: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 `;
 
