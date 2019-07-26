@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import React, { useState } from 'react';
 import {
   Container,
@@ -55,6 +56,17 @@ const BudgetForm = () => {
     budget: '',
   });
 
+  const handleChange = (e) => {
+    const name = e.target.getAttribute('name');
+    const value = e.target.getAttribute('value')
+      ? e.target.getAttribute('value')
+      : e.target.value;
+
+    setValues({ ...values, [name]: value });
+  };
+
+  console.log(values);
+
   return (
     <PageWithoutNavbarTemplate>
       <Container>
@@ -76,7 +88,7 @@ const BudgetForm = () => {
             }
             return (
               <Column key={title}>
-                <Box name="category" value={title}>
+                <Box name="category" onClick={handleChange} value={title}>
                   <StyledCategoryIcon>
                     <CategoryIcon category={title} />
                   </StyledCategoryIcon>
@@ -91,8 +103,8 @@ const BudgetForm = () => {
             label="Budget Name"
             type="string"
             name="budgetName"
-            autoFocus
             required
+            onChange={handleChange}
           />
         </Row>
         <Row center>
@@ -102,7 +114,7 @@ const BudgetForm = () => {
               type="number"
               step="any"
               name="budget"
-              autoFocus
+              onChange={handleChange}
               required
             />
           </Column>
