@@ -49,14 +49,15 @@ const BudgetList = () => {
       });
     };
     const getTransactionAmount = async () => {
-      const amount = await Firebase.getTransactionsAmountByCategory('eating');
-      console.log(amount);
+      const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
+        'eating',
+        currentDate,
+      );
+      console.log('AMOUNT: ' + amount);
     };
     getBudgets();
     getTransactionAmount();
-  }, []);
-
-  console.log(budgets);
+  }, [currentDate]);
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();
