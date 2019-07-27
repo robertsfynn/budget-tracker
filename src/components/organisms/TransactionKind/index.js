@@ -28,7 +28,7 @@ const TransactionKind = ({ handleChangeBox }) => (
     </Title>
     <Row>
       <Column>
-        <Box name="transaction" value="income" onClick={handleChangeBox}>
+        <Box marginRight name="transaction" value="income" onClick={handleChangeBox}>
           <IncomeIcon name="transaction" value="income" />
           <StyledText>Income</StyledText>
         </Box>

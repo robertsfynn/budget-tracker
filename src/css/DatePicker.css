@@ -1,4 +1,5 @@
-.react-datepicker__current-month {
+.react-datepicker__current-month,
+.react-datepicker-year-header {
   opacity: 0.9;
   font-family: GTWalsheimPro;
   font-weight: bold;
@@ -7,6 +8,7 @@
   letter-spacing: normal;
   text-align: center;
   color: #1c202e;
+  font-size: 1.44rem;
 }
 .react-datepicker__header {
   background-color: #ffffff;
@@ -23,7 +25,9 @@
   text-align: center;
   color: #1c202e;
 }
-.react-datepicker__day--selected {
+.react-datepicker__day--selected,
+.react-datepicker__month--selected,
+.react-datepicker__month-text.react-datepicker__month--selected:hover {
   border-radius: 25px;
   background-color: #ff3378;
   color: #fff;
@@ -64,4 +68,14 @@
     width: 3rem;
     line-height: 3rem;
   }
+}
+
+.react-datepicker__monthPicker {
+  margin-top: 2rem;
+}
+
+.react-datepicker__month .react-datepicker__month-text {
+  font-size: 1rem;
+  line-height: 3rem;
+  width: 5rem;
 }

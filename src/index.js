@@ -32,7 +32,12 @@ const GlobalStyles = createGlobalStyle`
     appearance: none;
     border-radius: 0;
   }
-  
+  a {
+    text-decoration: none;
+  }
+  *:focus {
+    outline: none;
+  }
 `;
 
 ReactDOM.render(

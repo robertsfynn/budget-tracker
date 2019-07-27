@@ -11,12 +11,18 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDERID,
 };
 
-const transformDateToStartAndEndDate = (date) => {
+const transformDayDateToStartAndEndDate = (date) => {
   const tomorrow = new Date(date);
   tomorrow.setDate(date.getDate() + 1);
 
   const startDate = new Date(date.toDateString());
   const endDate = new Date(tomorrow.toDateString());
+  return { startDate, endDate };
+};
+
+const transformMonthDateToStartAndEndDate = (date) => {
+  const startDate = new Date(date.getFullYear(), date.getMonth(), 1);
+  const endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0);
   return { startDate, endDate };
 };
 
@@ -48,20 +54,6 @@ class Firebase {
     });
   }
 
-  setMonthlyBudget(monthlyBudget) {
-    return this.db.doc(`monthlyBudget/${this.auth.currentUser.uid}`).set({
-      ...monthlyBudget,
-    });
-  }
-
-  async getMonthlyBudget() {
-    const monthlyBudget = await this.db
-      .doc(`monthlyBudget/${this.auth.currentUser.uid}`)
-      .get();
-
-    return monthlyBudget.data();
-  }
-
   addTransaction(transaction) {
     const user = this.auth.currentUser.uid;
     return this.db
@@ -88,7 +80,7 @@ class Firebase {
 
   async getTransactions(date) {
     const user = this.auth.currentUser.uid;
-    const transformedDate = transformDateToStartAndEndDate(date);
+    const transformedDate = transformDayDateToStartAndEndDate(date);
 
     const transactions = await this.db
       .collection('DailyTransactions')
@@ -98,6 +90,48 @@ class Firebase {
       .get();
 
     return transactions;
+  }
+
+  addBudget(budget) {
+    const user = this.auth.currentUser.uid;
+    return this.db
+      .collection('Budget')
+      .doc()
+      .set({
+        user,
+        ...budget,
+      });
+  }
+
+  async getBudgets() {
+    const user = this.auth.currentUser.uid;
+
+    const budgets = await this.db
+      .collection('Budget')
+      .where('user', '==', user)
+      .get();
+
+    return budgets;
+  }
+
+  async getTransactionsAmountByCategoryAndDate(category, date) {
+    const user = this.auth.currentUser.uid;
+    let transactionAmount = 0;
+    const transformedDate = transformMonthDateToStartAndEndDate(date);
+
+    const querySnapshot = await this.db
+      .collection('DailyTransactions')
+      .where('user', '==', user)
+      .where('category', '==', category)
+      .where('date', '>', transformedDate.startDate)
+      .where('date', '<', transformedDate.endDate)
+      .get();
+
+    querySnapshot.forEach((doc) => {
+      transactionAmount += parseFloat(doc.data().amount);
+    });
+
+    return transactionAmount;
   }
 
   async getCategories() {

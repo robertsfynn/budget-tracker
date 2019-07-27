@@ -35,6 +35,7 @@ const StyledDivAddButton = styled.div`
 
 const Navbar = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
+
   const logout = async () => {
     await Firebase.logout();
     history.push('/login');
@@ -45,20 +46,25 @@ const Navbar = ({ history }) => {
       <Container>
         <Row center>
           <Column>
-            <NavbarItem text="Daily" active logo={DailyLogo} />
+            <Link to="/">
+              <NavbarItem text="Daily" logo={DailyLogo} />
+            </Link>
           </Column>
           <Column>
-            <NavbarItem text="Budget" logo={BudgetLogo} />
+            <Link to="/budget">
+              <NavbarItem text="Budget" logo={BudgetLogo} />
+            </Link>
+          </Column>
+
+          <Column offset="20%" />
+          <Column onClick={logout}>
+            <NavbarItem text="Logout" logo={ProfileLogo} />
           </Column>
           <StyledDivAddButton>
             <Link to="/create">
               <Button type="add" />
             </Link>
           </StyledDivAddButton>
-          <Column offset="20%" />
-          <Column onClick={logout}>
-            <NavbarItem text="Logout" logo={ProfileLogo} />
-          </Column>
         </Row>
       </Container>
     </StyledNavbar>

@@ -11,6 +11,7 @@ const StyledLabel = styled.label`
   line-height: normal;
   letter-spacing: normal;
   color: #aeb1b8;
+  width: 100%;
 `;
 
 const Label = ({ children, ...props }) => (
