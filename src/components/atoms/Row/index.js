@@ -7,8 +7,9 @@ const Row = styled.div`
   flex-wrap: wrap;
   margin: ${({ noMargin }) => (noMargin ? '0' : '0 0 1.5rem 0')};
   align-items: ${({ center }) => (center ? 'center' : 'initial')};
-  flex-wrap: ${({ scrollable }) => (scrollable ? 'nowrap' : '')}
-  overflow: ${({ scrollable }) => (scrollable ? 'auto' : '')}
+  flex-wrap: ${({ scrollable }) => (scrollable ? 'nowrap' : '')};
+  overflow: ${({ scrollable }) => (scrollable ? 'auto' : '')};
+  justify-content: ${({ justifyContent }) => justifyContent};
 `;
 
 export default Row;
