@@ -100,6 +100,7 @@ const BudgetForm = ({ history }) => {
                     name="category"
                     onClick={handleChange}
                     value={title}
+                    marginRight
                   >
                     <StyledCategoryIcon>
                       <CategoryIcon category={title} />

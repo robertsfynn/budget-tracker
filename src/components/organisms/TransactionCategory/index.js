@@ -29,7 +29,12 @@ const TransactionCategory = ({ handleChangeBox }) => (
       }
       return (
         <Column key={title}>
-          <Box name="category" value={title} onClick={handleChangeBox}>
+          <Box
+            name="category"
+            value={title}
+            onClick={handleChangeBox}
+            marginRight
+          >
             <StyledCategoryIcon>
               <CategoryIcon category={title} />
             </StyledCategoryIcon>
