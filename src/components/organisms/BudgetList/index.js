@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Container,
   Arrow,
@@ -6,6 +6,7 @@ import {
   Title,
   Row,
   BudgetBox,
+  FirebaseContext,
 } from 'components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
@@ -14,6 +15,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'react-placeholder/lib/reactPlaceholder.css';
 
 const BudgetList = () => {
+  const Firebase = useContext(FirebaseContext);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +34,16 @@ const BudgetList = () => {
   );
 
   useEffect(() => {
-    setIsLoading(false);
+    Firebase.getBudgets().then((querySnapshot) => {
+      const newBudgets = [];
+      querySnapshot.forEach((doc) => {
+        const budget = doc.data();
+        const { id } = doc;
+
+        newBudgets.push({ id, ...budget });
+      });
+      setIsLoading(false);
+    });
   }, []);
 
   const toggleCalendar = (e) => {

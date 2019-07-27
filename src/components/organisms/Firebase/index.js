@@ -97,6 +97,17 @@ class Firebase {
       });
   }
 
+  async getBudgets() {
+    const user = this.auth.currentUser.uid;
+
+    const budgets = await this.db
+      .collection('DailyTransactions')
+      .where('user', '==', user)
+      .get();
+
+    return budgets;
+  }
+
   async getCategories() {
     const categories = await this.db.collection('categories').get();
 
