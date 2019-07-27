@@ -54,7 +54,6 @@ const BudgetForm = ({ history }) => {
   const Firebase = useContext(FirebaseContext);
   const [values, setValues] = useState({
     category: 'car',
-    budgetName: '',
     budget: '',
   });
 
@@ -110,15 +109,6 @@ const BudgetForm = ({ history }) => {
                 </Column>
               );
             })}
-          </Row>
-          <Row>
-            <FormField
-              label="Budget Name"
-              type="string"
-              name="budgetName"
-              required
-              onChange={handleChange}
-            />
           </Row>
           <Row center>
             <Column size="70%">

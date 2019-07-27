@@ -16,6 +16,7 @@ import 'react-placeholder/lib/reactPlaceholder.css';
 
 const BudgetList = () => {
   const Firebase = useContext(FirebaseContext);
+  const [budgets, setBudgets] = useState();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,17 +35,28 @@ const BudgetList = () => {
   );
 
   useEffect(() => {
-    Firebase.getBudgets().then((querySnapshot) => {
-      const newBudgets = [];
-      querySnapshot.forEach((doc) => {
-        const budget = doc.data();
-        const { id } = doc;
+    const getBudgets = () => {
+      Firebase.getBudgets().then((querySnapshot) => {
+        const newBudgets = [];
+        querySnapshot.forEach((doc) => {
+          const budget = doc.data();
+          const { id } = doc;
 
-        newBudgets.push({ id, ...budget });
+          newBudgets.push({ id, ...budget });
+        });
+        setBudgets(newBudgets);
+        setIsLoading(false);
       });
-      setIsLoading(false);
-    });
+    };
+    const getTransactionAmount = async () => {
+      const amount = await Firebase.getTransactionsAmountByCategory('eating');
+      console.log(amount);
+    };
+    getBudgets();
+    getTransactionAmount();
   }, []);
+
+  console.log(budgets);
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();

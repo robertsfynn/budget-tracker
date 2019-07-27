@@ -101,11 +101,28 @@ class Firebase {
     const user = this.auth.currentUser.uid;
 
     const budgets = await this.db
-      .collection('DailyTransactions')
+      .collection('Budget')
       .where('user', '==', user)
       .get();
 
     return budgets;
+  }
+
+  async getTransactionsAmountByCategory(category) {
+    const user = this.auth.currentUser.uid;
+    let transactionAmount = 0;
+
+    const querySnapshot = await this.db
+      .collection('DailyTransactions')
+      .where('user', '==', user)
+      .where('category', '==', category)
+      .get();
+
+    querySnapshot.forEach((doc) => {
+      transactionAmount += parseFloat(doc.data().amount);
+    });
+
+    return transactionAmount;
   }
 
   async getCategories() {
