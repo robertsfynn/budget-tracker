@@ -21,35 +21,35 @@ const BudgetList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const getBudgets = async () => {
-    const newBudgets = [];
-    const querySnapshot = await Firebase.getBudgets();
-
-    querySnapshot.forEach((doc) => {
-      const budget = doc.data();
-      const { id } = doc;
-
-      newBudgets.push({ id, ...budget });
-    });
-
-    const budgetWithAmount = await Promise.all(
-      newBudgets.map(async (budget) => {
-        const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
-          budget.category,
-          currentDate,
-        );
-        budget.amount = amount;
-        return budget;
-      }),
-    );
-
-    setBudgets(budgetWithAmount);
-    setIsLoading(false);
-  };
-
   useEffect(() => {
+    const getBudgets = async () => {
+      const newBudgets = [];
+      const querySnapshot = await Firebase.getBudgets();
+
+      querySnapshot.forEach((doc) => {
+        const budget = doc.data();
+        const { id } = doc;
+
+        newBudgets.push({ id, ...budget });
+      });
+
+      const budgetWithAmount = await Promise.all(
+        newBudgets.map(async (budget) => {
+          const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
+            budget.category,
+            currentDate,
+          );
+          budget.amount = amount;
+          return budget;
+        }),
+      );
+
+      setBudgets(budgetWithAmount);
+      setIsLoading(false);
+    };
+
     getBudgets();
-  }, [currentDate]);
+  }, [currentDate, Firebase]);
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();
@@ -66,6 +66,7 @@ const BudgetList = () => {
     if (!event.target.matches('.react-datepicker__portal')) return;
     setIsOpen(false);
   });
+
   return (
     <Container>
       <ReactPlaceholder
