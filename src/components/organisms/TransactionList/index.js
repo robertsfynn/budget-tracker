@@ -9,11 +9,11 @@ import {
   SmallHeader,
   Arrow,
   Row,
+  CustomPlaceholder,
 } from 'components';
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
 import DatePicker from 'react-datepicker';
-import { RectShape } from 'react-placeholder/lib/placeholders';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-placeholder/lib/reactPlaceholder.css';
 
@@ -21,18 +21,6 @@ const StyledTransactionList = styled.ul`
   padding: 0;
   margin: 0;
 `;
-
-const CustomPlaceholder = (
-  <RectShape
-    style={{
-      marginBottom: 30,
-      width: '100%',
-      height: '30px',
-      background: 'rgb(205, 205, 205)',
-      borderRadius: '25px',
-    }}
-  />
-);
 
 const TransactionList = () => {
   const [transactions, setTransactions] = useState([]);

@@ -8,12 +8,11 @@ import {
   Row,
   BudgetBox,
   FirebaseContext,
+  CustomPlaceholder,
 } from 'components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
-import { RectShape } from 'react-placeholder/lib/placeholders';
 import 'react-datepicker/dist/react-datepicker.css';
-import 'react-placeholder/lib/reactPlaceholder.css';
 
 const BudgetList = () => {
   const Firebase = useContext(FirebaseContext);
@@ -21,19 +20,6 @@ const BudgetList = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
-  // TODO: Put in own Component with other Placeholders
-  const CustomPlaceholder = (
-    <RectShape
-      style={{
-        marginBottom: 30,
-        width: '100%',
-        height: '30px',
-        background: 'rgb(205, 205, 205)',
-        borderRadius: '25px',
-      }}
-    />
-  );
 
   const getBudgets = async () => {
     const newBudgets = [];
