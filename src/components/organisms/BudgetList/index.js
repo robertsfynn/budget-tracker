@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect, useContext } from 'react';
 import {
   Container,
@@ -34,29 +35,34 @@ const BudgetList = () => {
     />
   );
 
-  useEffect(() => {
-    const getBudgets = () => {
-      Firebase.getBudgets().then((querySnapshot) => {
-        const newBudgets = [];
-        querySnapshot.forEach((doc) => {
-          const budget = doc.data();
-          const { id } = doc;
+  const getBudgets = async () => {
+    const newBudgets = [];
+    const querySnapshot = await Firebase.getBudgets();
 
-          newBudgets.push({ id, ...budget });
-        });
-        setBudgets(newBudgets);
-        setIsLoading(false);
-      });
-    };
-    const getTransactionAmount = async () => {
-      const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
-        'eating',
-        currentDate,
-      );
-      console.log('AMOUNT: ' + amount);
-    };
+    querySnapshot.forEach((doc) => {
+      const budget = doc.data();
+      const { id } = doc;
+
+      newBudgets.push({ id, ...budget });
+    });
+
+    const budgetWithAmount = await Promise.all(
+      newBudgets.map(async (budget) => {
+        const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
+          budget.category,
+          currentDate,
+        );
+        budget.amount = amount;
+        return budget;
+      }),
+    );
+
+    setBudgets(budgetWithAmount);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
     getBudgets();
-    getTransactionAmount();
   }, [currentDate]);
 
   const toggleCalendar = (e) => {
@@ -99,7 +105,16 @@ const BudgetList = () => {
           inline
         />
       ) : null}
-      <BudgetBox />
+      {budgets
+        ? budgets.map(({ id, amount, category, budget }) => (
+            <BudgetBox
+              key={id}
+              amount={amount}
+              category={category}
+              budget={budget}
+            />
+          ))
+        : null}
     </Container>
   );
 };

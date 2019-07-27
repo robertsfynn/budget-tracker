@@ -12,6 +12,7 @@ const StyledBudgetTitle = styled.p`
   letter-spacing: normal;
   color: #aeb1b8;
   margin: 0;
+  text-transform: capitalize;
 `;
 
 const StyledBudgetValue = styled.p`
@@ -35,6 +36,7 @@ const StyledBudgetNumber = styled.p`
   line-height: normal;
   letter-spacing: normal;
   color: #aeb1b8;
+  float: right;
 `;
 
 const StyledBudgetPercentage = styled.span`
@@ -52,35 +54,38 @@ const StyledBudgetPercentage = styled.span`
 const ProgressBarWrapper = styled.div`
   background: #f5f5f5;
   width: 100vw;
-  height: 10px;
+  height: 5px;
   border-radius: 10px;
+  margin-top: 0.5rem;
 `;
 
 const ProgressBar = styled.div`
-  background: #33c9ff;
+  background: #ff3378;
   height: 100%;
   width: 20%;
   border-radius: 10px;
 `;
 
-const BudgetBox = () => {
+const BudgetBox = ({ category, amount, budget }) => {
+  const percentage = ((amount / budget) * 100).toFixed(1);
+
   return (
     <Box>
       <Row noMargin>
-        <StyledBudgetTitle>Budget name</StyledBudgetTitle>
+        <StyledBudgetTitle>{category}</StyledBudgetTitle>
       </Row>
       <Row noMargin center>
         <Column>
-          <StyledBudgetValue>$2446.90</StyledBudgetValue>
-          <StyledBudgetPercentage>50%</StyledBudgetPercentage>
+          <StyledBudgetValue>{amount}€</StyledBudgetValue>
+          <StyledBudgetPercentage>{percentage}</StyledBudgetPercentage>
         </Column>
         <Column>
-          <StyledBudgetNumber>$5000.00</StyledBudgetNumber>
+          <StyledBudgetNumber>{budget}€</StyledBudgetNumber>
         </Column>
       </Row>
       <Row>
         <ProgressBarWrapper>
-          <ProgressBar style={{ width: '100%' }} />
+          <ProgressBar style={{ width: `${percentage}%` }} />
         </ProgressBarWrapper>
       </Row>
     </Box>
