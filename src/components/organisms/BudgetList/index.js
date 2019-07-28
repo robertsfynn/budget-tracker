@@ -23,28 +23,23 @@ const BudgetList = () => {
 
   useEffect(() => {
     const getBudgets = async () => {
-      const newBudgets = [];
       const querySnapshot = await Firebase.getBudgets();
+      const newBudgets = await Promise.all(
+        querySnapshot.docs.map(async (doc) => {
+          const budget = doc.data();
+          const { id } = doc;
 
-      querySnapshot.forEach((doc) => {
-        const budget = doc.data();
-        const { id } = doc;
-
-        newBudgets.push({ id, ...budget });
-      });
-
-      const budgetWithAmount = await Promise.all(
-        newBudgets.map(async (budget) => {
           const amount = await Firebase.getTransactionsAmountByCategoryAndDate(
             budget.category,
             currentDate,
           );
+
           budget.amount = amount;
-          return budget;
+          return { id, ...budget };
         }),
       );
 
-      setBudgets(budgetWithAmount);
+      setBudgets(newBudgets);
       setIsLoading(false);
     };
 
