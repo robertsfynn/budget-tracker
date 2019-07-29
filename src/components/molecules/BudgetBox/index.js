@@ -77,7 +77,7 @@ const BudgetBox = ({ category, amount, budget }) => {
       <Row noMargin center>
         <Column>
           <StyledBudgetValue>{amount}€</StyledBudgetValue>
-          <StyledBudgetPercentage>{percentage}</StyledBudgetPercentage>
+          <StyledBudgetPercentage>{percentage}%</StyledBudgetPercentage>
         </Column>
         <Column>
           <StyledBudgetNumber>{budget}€</StyledBudgetNumber>
