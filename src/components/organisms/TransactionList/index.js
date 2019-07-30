@@ -79,20 +79,14 @@ const TransactionList = () => {
 
   return (
     <Container>
-      <ReactPlaceholder
-        showLoadingAnimation
-        ready={!isLoading}
-        customPlaceholder={CustomPlaceholder}
-      >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title noMargin small>
-            <Row noMargin center>
-              {currentDate.toDateString()}
-              <Arrow type="bottom" />
-            </Row>
-          </Title>
-        </SmallHeader>
-      </ReactPlaceholder>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title noMargin small>
+          <Row noMargin center>
+            {currentDate.toDateString()}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker
           selected={currentDate}
