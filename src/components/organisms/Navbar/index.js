@@ -13,6 +13,7 @@ import PropTypes from 'prop-types';
 import DailyLogo from 'assets/navbar/calender.svg';
 import ProfileLogo from 'assets/navbar/profile.svg';
 import BudgetLogo from 'assets/navbar/budget.svg';
+import StatsLogo from 'assets/navbar/stats.svg';
 
 const StyledNavbar = styled.nav`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
@@ -51,12 +52,15 @@ const Navbar = ({ history }) => {
             </Link>
           </Column>
           <Column>
+            <Link to="/stats">
+              <NavbarItem text="Stats" logo={StatsLogo} />
+            </Link>
+          </Column>
+          <Column offset="20%">
             <Link to="/budget">
               <NavbarItem text="Budget" logo={BudgetLogo} />
             </Link>
           </Column>
-
-          <Column offset="20%" />
           <Column onClick={logout}>
             <NavbarItem text="Logout" logo={ProfileLogo} />
           </Column>
