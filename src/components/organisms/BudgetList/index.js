@@ -64,20 +64,14 @@ const BudgetList = () => {
 
   return (
     <Container>
-      <ReactPlaceholder
-        showLoadingAnimation
-        ready={!isLoading}
-        customPlaceholder={CustomPlaceholder}
-      >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title noMargin small>
-            <Row noMargin center>
-              {currentDate.toLocaleString('default', { month: 'long' })}
-              <Arrow type="bottom" />
-            </Row>
-          </Title>
-        </SmallHeader>
-      </ReactPlaceholder>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title noMargin small>
+          <Row noMargin center>
+            {currentDate.toLocaleString('default', { month: 'long' })}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker
           selected={currentDate}
@@ -87,8 +81,13 @@ const BudgetList = () => {
           inline
         />
       ) : null}
-      {budgets
-        ? budgets.map(({ id, amount, category, budget }) => (
+      <ReactPlaceholder
+        showLoadingAnimation
+        ready={!isLoading}
+        customPlaceholder={<CustomPlaceholder height={150} />}
+      >
+        {budgets ? (
+          budgets.map(({ id, amount, category, budget }) => (
             <BudgetBox
               key={id}
               amount={amount}
@@ -96,7 +95,10 @@ const BudgetList = () => {
               budget={budget}
             />
           ))
-        : null}
+        ) : (
+          <> </>
+        )}
+      </ReactPlaceholder>
     </Container>
   );
 };

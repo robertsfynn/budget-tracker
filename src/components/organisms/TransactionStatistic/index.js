@@ -113,6 +113,7 @@ const TransactionStatistic = () => {
 
   const handleChange = (newDate) => {
     toggleCalendar();
+    setIsLoading(true);
     setCurrentDate(newDate);
   };
 
@@ -124,20 +125,14 @@ const TransactionStatistic = () => {
 
   return (
     <Container>
-      <ReactPlaceholder
-        showLoadingAnimation
-        ready={!isLoading}
-        customPlaceholder={CustomPlaceholder}
-      >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title noMargin small>
-            <Row noMargin center>
-              {currentDate.toLocaleString('default', { month: 'long' })}
-              <Arrow type="bottom" />
-            </Row>
-          </Title>
-        </SmallHeader>
-      </ReactPlaceholder>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title noMargin small>
+          <Row noMargin center>
+            {currentDate.toLocaleString('default', { month: 'long' })}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker
           selected={currentDate}
@@ -147,27 +142,35 @@ const TransactionStatistic = () => {
           inline
         />
       ) : null}
-      {!isLoading && data.length ? (
-        <Box>
-          <StyledHeader>Net balance</StyledHeader>
-          <StyledBalanceAmount>
-            {data[data.length - 1].amount}€
-          </StyledBalanceAmount>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
-              <XAxis dataKey="dateDay" />
-              <YAxis />
-              <Tooltip content={<CustomTooltip />} />
-              <Line
-                type="monotone"
-                dataKey="amount"
-                stroke="#ff3378"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </Box>
-      ) : null}
+      <ReactPlaceholder
+        showLoadingAnimation
+        ready={!isLoading}
+        customPlaceholder={<CustomPlaceholder height={450} />}
+      >
+        {data && data.length ? (
+          <Box>
+            <StyledHeader>Net balance</StyledHeader>
+            <StyledBalanceAmount>
+              {data[data.length - 1].amount}€
+            </StyledBalanceAmount>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
+                <XAxis dataKey="dateDay" />
+                <YAxis />
+                <Tooltip content={<CustomTooltip />} />
+                <Line
+                  type="monotone"
+                  dataKey="amount"
+                  stroke="#ff3378"
+                  strokeWidth={3}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </Box>
+        ) : (
+          <></>
+        )}
+      </ReactPlaceholder>
     </Container>
   );
 };
