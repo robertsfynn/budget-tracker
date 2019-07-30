@@ -7,20 +7,46 @@ import {
   CustomPlaceholder,
   Row,
   Container,
+  Box,
+  CustomTooltip,
 } from 'components';
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts';
+import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-datepicker/dist/react-datepicker.css';
+import '../../../css/Statistics.css';
+
+const StyledHeader = styled.h4`
+  font-family: GTWalsheimPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #aeb1b8;
+  margin: 0;
+`;
+
+const StyledBalanceAmount = styled.p`
+  font-family: GTWalsheimPro;
+  font-size: 36px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.83;
+  letter-spacing: normal;
+  color: #1c202e;
+  margin-top: 1rem;
+`;
 
 const TransactionStatistic = () => {
   const Firebase = useContext(FirebaseContext);
@@ -121,17 +147,27 @@ const TransactionStatistic = () => {
           inline
         />
       ) : null}
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="dateDay" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-
-          <Line type="monotone" dataKey="amount" stroke="#82ca9d" />
-        </LineChart>
-      </ResponsiveContainer>
+      {!isLoading && data.length ? (
+        <Box>
+          <StyledHeader>Net balance</StyledHeader>
+          <StyledBalanceAmount>
+            {data[data.length - 1].amount}€
+          </StyledBalanceAmount>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
+              <XAxis dataKey="dateDay" />
+              <YAxis />
+              <Tooltip content={<CustomTooltip />} />
+              <Line
+                type="monotone"
+                dataKey="amount"
+                stroke="#ff3378"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </Box>
+      ) : null}
     </Container>
   );
 };
