@@ -30,22 +30,33 @@ const TransactionStatistic = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const formatData = (unformattedData) => {
+    // creates an Object where all Entries of the same Day get summed up
     const helperObject = {};
     unformattedData.forEach((dataItem) => {
       helperObject[dataItem.dateDay] =
         (helperObject[dataItem.dateDay] || 0) + dataItem.amountTransformed;
     });
-    const result = Object.keys(helperObject).map((day) => {
+
+    // turns that Object into an Array
+    const helperArray = Object.keys(helperObject).map((day) => {
       return {
         dateDay: day,
         amount: Math.round(helperObject[day] * 1e2) / 1e2,
       };
     });
-    console.log(result);
-    const test = result.map((elem, index) =>
-      result.slice(0, index + 1).reduce((a, b) => a + b.amount, 0),
+
+    // sums the amount from the day before into the next one so the values are a curve
+    const result = helperArray.map((elem, index) =>
+      helperArray.slice(0, index + 1).reduce((previousValue, currentValue) => {
+        return {
+          dateDay: currentValue.dateDay,
+          amount:
+            Math.round((previousValue.amount + currentValue.amount) * 1e2) /
+            1e2,
+        };
+      }),
     );
-    console.log(test);
+
     return result;
   };
 
@@ -53,18 +64,16 @@ const TransactionStatistic = () => {
     const getTransactions = async () => {
       const newData = [];
       const transactions = await Firebase.getTransactionsByDate(currentDate);
+
       transactions.forEach((doc) => {
         const { date, amount, transaction } = doc.data();
         const dateDay = date.toDate().getDay();
         const amountWithOperator = transaction === 'expense' ? -amount : amount;
         const amountTransformed = parseFloat(amountWithOperator);
-        console.log(amountTransformed);
         newData.push({ dateDay, amountTransformed, transaction });
       });
-      console.log(newData);
 
       const formettedData = formatData(newData);
-      console.log(formettedData);
       setData(formettedData);
       setIsLoading(false);
     };
@@ -112,8 +121,8 @@ const TransactionStatistic = () => {
           inline
         />
       ) : null}
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={data}>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="dateDay" />
           <YAxis />
