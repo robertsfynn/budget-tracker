@@ -4,12 +4,11 @@ import {
   Container,
   TransactionListItem,
   Total,
-  NoTransactions,
+  EmptyPage,
   Title,
   SmallHeader,
   Arrow,
   Row,
-  CustomPlaceholder,
 } from 'components';
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
@@ -39,7 +38,7 @@ const TransactionList = () => {
   useEffect(() => {
     resetState();
     if (Firebase.getCurrentUser()) {
-      Firebase.getTransactions(currentDate).then((querySnapshot) => {
+      Firebase.getTransactionsByDay(currentDate).then((querySnapshot) => {
         const newTransactions = [];
         let newTotal = 0;
         querySnapshot.forEach((doc) => {
@@ -79,20 +78,14 @@ const TransactionList = () => {
 
   return (
     <Container>
-      <ReactPlaceholder
-        showLoadingAnimation
-        ready={!isLoading}
-        customPlaceholder={CustomPlaceholder}
-      >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title noMargin small>
-            <Row noMargin center>
-              {currentDate.toDateString()}
-              <Arrow type="bottom" />
-            </Row>
-          </Title>
-        </SmallHeader>
-      </ReactPlaceholder>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title noMargin small>
+          <Row noMargin center>
+            {currentDate.toDateString()}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker
           selected={currentDate}
@@ -127,7 +120,10 @@ const TransactionList = () => {
             <Total total={total} />
           </>
         ) : (
-          <NoTransactions />
+          <EmptyPage
+            title="No transactions yet!"
+            text="You can add transaction by tapping the + button below"
+          />
         )}
       </ReactPlaceholder>
     </Container>

@@ -8,6 +8,7 @@ import {
   TransactionForm,
   BudgetPage,
   BudgetForm,
+  StatsPage,
 } from 'components';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Route path="/create" component={TransactionForm} />
       <Route path="/budget" exact component={BudgetPage} />
       <Route path="/budget/create" component={BudgetForm} />
+      <Route path="/stats" component={StatsPage} />
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
     </Router>

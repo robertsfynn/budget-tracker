@@ -15,14 +15,12 @@ const StyledSubTitle = styled.p`
   color: #1c202e;
 `;
 
-const NoTransactions = () => (
+const EmptyPage = ({ title, text }) => (
   <>
     <AuthImage height={150} />
-    <Title center>No Transactions yet</Title>
-    <StyledSubTitle>
-      You can add transaction by tapping the + button below
-    </StyledSubTitle>
+    <Title center>{title}</Title>
+    <StyledSubTitle>{text}</StyledSubTitle>
   </>
 );
 
-export default NoTransactions;
+export default EmptyPage;

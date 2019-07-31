@@ -9,6 +9,7 @@ import {
   BudgetBox,
   FirebaseContext,
   CustomPlaceholder,
+  EmptyPage,
 } from 'components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
@@ -64,20 +65,14 @@ const BudgetList = () => {
 
   return (
     <Container>
-      <ReactPlaceholder
-        showLoadingAnimation
-        ready={!isLoading}
-        customPlaceholder={CustomPlaceholder}
-      >
-        <SmallHeader clickable onClick={toggleCalendar}>
-          <Title noMargin small>
-            <Row noMargin center>
-              {currentDate.toLocaleString('default', { month: 'long' })}
-              <Arrow type="bottom" />
-            </Row>
-          </Title>
-        </SmallHeader>
-      </ReactPlaceholder>
+      <SmallHeader clickable onClick={toggleCalendar}>
+        <Title noMargin small>
+          <Row noMargin center>
+            {currentDate.toLocaleString('default', { month: 'long' })}
+            <Arrow type="bottom" />
+          </Row>
+        </Title>
+      </SmallHeader>
       {isOpen ? (
         <DatePicker
           selected={currentDate}
@@ -87,8 +82,13 @@ const BudgetList = () => {
           inline
         />
       ) : null}
-      {budgets
-        ? budgets.map(({ id, amount, category, budget }) => (
+      <ReactPlaceholder
+        showLoadingAnimation
+        ready={!isLoading}
+        customPlaceholder={<CustomPlaceholder height={150} type="box" />}
+      >
+        {budgets ? (
+          budgets.map(({ id, amount, category, budget }) => (
             <BudgetBox
               key={id}
               amount={amount}
@@ -96,7 +96,13 @@ const BudgetList = () => {
               budget={budget}
             />
           ))
-        : null}
+        ) : (
+          <EmptyPage
+            title="No budgets made yet!"
+            text="You can add a budget by pressing the top at the top of the page!"
+          />
+        )}
+      </ReactPlaceholder>
     </Container>
   );
 };

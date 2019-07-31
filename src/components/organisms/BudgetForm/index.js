@@ -94,13 +94,13 @@ const BudgetForm = ({ history }) => {
                 return null;
               }
               return (
-                <Column key={title}>
+                <Column marginRight={1} key={title}>
                   <Box
                     active={values.category === title}
                     name="category"
                     onClick={handleChange}
                     value={title}
-                    marginRight
+                    cursor="pointer"
                   >
                     <StyledCategoryIcon>
                       <CategoryIcon category={title} />

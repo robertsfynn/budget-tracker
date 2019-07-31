@@ -6,6 +6,10 @@ const Column = styled.div`
   max-width: ${({ size }) => size || ''};
   margin-left: ${({ offset }) => offset};
 
+  @media (min-width: 330px) {
+    margin-right: ${({ marginRight }) => marginRight}rem;
+  }
+
   @media (min-width: 768px) {
     flex-basis: ${({ md }) => md || ''};
     max-width: ${({ md }) => md || ''};

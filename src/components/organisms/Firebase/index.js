@@ -78,7 +78,7 @@ class Firebase {
       });
   }
 
-  async getTransactions(date) {
+  async getTransactionsByDay(date) {
     const user = this.auth.currentUser.uid;
     const transformedDate = transformDayDateToStartAndEndDate(date);
 
@@ -112,6 +112,20 @@ class Firebase {
       .get();
 
     return budgets;
+  }
+
+  async getTransactionsByMonth(date) {
+    const user = this.auth.currentUser.uid;
+    const transformedDate = transformMonthDateToStartAndEndDate(date);
+
+    const transactions = await this.db
+      .collection('DailyTransactions')
+      .where('user', '==', user)
+      .where('date', '>', transformedDate.startDate)
+      .where('date', '<', transformedDate.endDate)
+      .get();
+
+    return transactions;
   }
 
   async getTransactionsAmountByCategoryAndDate(category, date) {

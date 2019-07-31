@@ -1,0 +1,14 @@
+.recharts-responsive-container {
+  pointer-events: all;
+}
+
+tspan {
+  font-family: GTWalsheimPro;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #aeb1b8;
+}

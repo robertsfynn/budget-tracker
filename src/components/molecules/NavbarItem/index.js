@@ -16,6 +16,28 @@ const StyledNavbarItem = styled.div`
     width: 40%;
     border-top: ${({ active }) => (active ? '1px solid #ff3378' : '')};
   }
+
+  :hover:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30%;
+    height: 1px;
+    width: 40%;
+    border-top: 1px solid #ff3378;
+  }
+
+  .active > & {
+    :before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 30%;
+      height: 1px;
+      width: 40%;
+      border-top: 1px solid #ff3378;
+    }
+  }
 `;
 
 const StyledNavbarLogo = styled.div`

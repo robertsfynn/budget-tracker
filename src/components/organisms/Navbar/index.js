@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, NavLink } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -13,27 +13,33 @@ import PropTypes from 'prop-types';
 import DailyLogo from 'assets/navbar/calender.svg';
 import ProfileLogo from 'assets/navbar/profile.svg';
 import BudgetLogo from 'assets/navbar/budget.svg';
+import StatsLogo from 'assets/navbar/stats.svg';
 
 const StyledNavbar = styled.nav`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
-  background-color: #ffffff;
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 10;
+  background: radial-gradient(
+    circle at top center,
+    transparent,
+    transparent 35px,
+    #ffffff 35px,
+    #ffffff
+  );
 `;
 
 const StyledDivAddButton = styled.div`
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  bottom: 30px;
+  bottom: 20px;
   padding: 1rem;
   border-radius: 100%;
-  background-color: #f0f0f0;
 `;
 
-const Navbar = ({ history }) => {
+const Navbar = React.memo(({ history }) => {
   const Firebase = useContext(FirebaseContext);
 
   const logout = async () => {
@@ -46,17 +52,20 @@ const Navbar = ({ history }) => {
       <Container>
         <Row center>
           <Column>
-            <Link to="/">
+            <NavLink to="/" exact>
               <NavbarItem text="Daily" logo={DailyLogo} />
-            </Link>
+            </NavLink>
           </Column>
           <Column>
-            <Link to="/budget">
-              <NavbarItem text="Budget" logo={BudgetLogo} />
-            </Link>
+            <NavLink to="/stats">
+              <NavbarItem text="Stats" logo={StatsLogo} />
+            </NavLink>
           </Column>
-
-          <Column offset="20%" />
+          <Column offset="20%">
+            <NavLink to="/budget">
+              <NavbarItem text="Budget" logo={BudgetLogo} />
+            </NavLink>
+          </Column>
           <Column onClick={logout}>
             <NavbarItem text="Logout" logo={ProfileLogo} />
           </Column>
@@ -69,7 +78,7 @@ const Navbar = ({ history }) => {
       </Container>
     </StyledNavbar>
   );
-};
+});
 
 Navbar.propTypes = {
   history: PropTypes.object.isRequired,
