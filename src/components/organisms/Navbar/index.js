@@ -39,15 +39,13 @@ const StyledDivAddButton = styled.div`
   border-radius: 100%;
 `;
 
-const Navbar = ({ history }) => {
+const Navbar = React.memo(({ history }) => {
   const Firebase = useContext(FirebaseContext);
 
   const logout = async () => {
     await Firebase.logout();
     history.push('/login');
   };
-
-  console.log("Navbar")
 
   return (
     <StyledNavbar>
@@ -80,7 +78,7 @@ const Navbar = ({ history }) => {
       </Container>
     </StyledNavbar>
   );
-};
+});
 
 Navbar.propTypes = {
   history: PropTypes.object.isRequired,

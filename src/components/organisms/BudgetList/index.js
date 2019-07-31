@@ -84,7 +84,7 @@ const BudgetList = () => {
       <ReactPlaceholder
         showLoadingAnimation
         ready={!isLoading}
-        customPlaceholder={<CustomPlaceholder height={150} />}
+        customPlaceholder={<CustomPlaceholder height={150} type="box" />}
       >
         {budgets ? (
           budgets.map(({ id, amount, category, budget }) => (

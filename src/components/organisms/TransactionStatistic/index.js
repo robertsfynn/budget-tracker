@@ -49,7 +49,7 @@ const TransactionStatistic = () => {
   const Firebase = useContext(FirebaseContext);
   const [data, setData] = useState();
   const [incomeAmount, setIncomeAmount] = useState();
-  const [exepenseAmount, setExpenseAmount] = useState();
+  const [expenseAmount, setExpenseAmount] = useState();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -155,26 +155,37 @@ const TransactionStatistic = () => {
       <ReactPlaceholder
         showLoadingAnimation
         ready={!isLoading}
-        customPlaceholder={<CustomPlaceholder height={450} />}
+        customPlaceholder={<CustomPlaceholder height={450} type="box" />}
       >
         {data && data.length ? <TransactionChart data={data} /> : <></>}
       </ReactPlaceholder>
-      <Row>
-        <Column>
-          <Box marginRight>
-            <IncomeIcon />
-            <StyledHeader marginTop={2}>Income</StyledHeader>
-            <StyledAmount>{incomeAmount}</StyledAmount>
-          </Box>
-        </Column>
-        <Column>
-          <Box>
-            <ExpenseIcon />
-            <StyledHeader marginTop={2}>Expense</StyledHeader>
-            <StyledAmount>{exepenseAmount}</StyledAmount>
-          </Box>
-        </Column>
-      </Row>
+
+      <ReactPlaceholder
+        showLoadingAnimation
+        ready={!isLoading}
+        customPlaceholder={<CustomPlaceholder height={200} type="boxes" />}
+      >
+        {incomeAmount || expenseAmount ? (
+          <Row>
+            <Column marginRight={1}>
+              <Box>
+                <IncomeIcon />
+                <StyledHeader marginTop={2}>Income</StyledHeader>
+                <StyledAmount>{incomeAmount}€</StyledAmount>
+              </Box>
+            </Column>
+            <Column>
+              <Box>
+                <ExpenseIcon />
+                <StyledHeader marginTop={2}>Expense</StyledHeader>
+                <StyledAmount>{expenseAmount}€</StyledAmount>
+              </Box>
+            </Column>
+          </Row>
+        ) : (
+          <></>
+        )}
+      </ReactPlaceholder>
     </Container>
   );
 };
