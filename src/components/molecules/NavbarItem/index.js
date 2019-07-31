@@ -25,7 +25,6 @@ const StyledNavbarItem = styled.div`
     height: 1px;
     width: 40%;
     border-top: 1px solid #ff3378;
-    transition: width 1.2s ease-out;
   }
 
   .active > & {

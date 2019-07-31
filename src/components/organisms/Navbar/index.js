@@ -17,21 +17,26 @@ import StatsLogo from 'assets/navbar/stats.svg';
 
 const StyledNavbar = styled.nav`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
-  background-color: #ffffff;
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 10;
+  background: radial-gradient(
+    circle at top center,
+    transparent,
+    transparent 35px,
+    #ffffff 35px,
+    #ffffff
+  );
 `;
 
 const StyledDivAddButton = styled.div`
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  bottom: 30px;
+  bottom: 20px;
   padding: 1rem;
   border-radius: 100%;
-  background-color: #f0f0f0;
 `;
 
 const Navbar = ({ history }) => {

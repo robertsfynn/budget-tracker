@@ -8,6 +8,7 @@ import {
   Row,
   Container,
   Box,
+  Column,
   CustomTooltip,
 } from 'components';
 import {
@@ -23,6 +24,8 @@ import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-datepicker/dist/react-datepicker.css';
 import '../../../css/Statistics.css';
+import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
+import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 
 const StyledHeader = styled.h4`
   font-family: GTWalsheimPro;
@@ -34,6 +37,7 @@ const StyledHeader = styled.h4`
   letter-spacing: normal;
   color: #aeb1b8;
   margin: 0;
+  margin-top: ${({ marginTop }) => marginTop}rem;
 `;
 
 const StyledBalanceAmount = styled.p`
@@ -48,9 +52,24 @@ const StyledBalanceAmount = styled.p`
   margin-top: 1rem;
 `;
 
+const StyledAmount = styled.p`
+  font-family: GTWalsheimPro;
+  font-size: 21px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #1c202e;
+  margin-bottom: 0;
+  margin-top: 1rem;
+`;
+
 const TransactionStatistic = () => {
   const Firebase = useContext(FirebaseContext);
   const [data, setData] = useState();
+  const [incomeAmount, setIncomeAmount] = useState();
+  const [exepenseAmount, setExpenseAmount] = useState();
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -171,6 +190,22 @@ const TransactionStatistic = () => {
           <></>
         )}
       </ReactPlaceholder>
+      <Row>
+        <Column>
+          <Box marginRight>
+            <IncomeIcon />
+            <StyledHeader marginTop={2}>Income</StyledHeader>
+            <StyledAmount>$6,593.75</StyledAmount>
+          </Box>
+        </Column>
+        <Column>
+          <Box>
+            <ExpenseIcon />
+            <StyledHeader marginTop={2}>Expense</StyledHeader>
+            <StyledAmount>$6,593.75</StyledAmount>
+          </Box>
+        </Column>
+      </Row>
     </Container>
   );
 };
