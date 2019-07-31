@@ -7,7 +7,7 @@ const Column = styled.div`
   margin-left: ${({ offset }) => offset};
 
   @media (min-width: 330px) {
-    margin-right: ${({ marginRight }) => marginRight}rem;
+    margin-right: ${({ marginRight }) => marginRight || 0}rem;
   }
 
   @media (min-width: 768px) {
