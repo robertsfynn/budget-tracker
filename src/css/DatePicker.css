@@ -64,6 +64,7 @@
 }
 
 @media (min-width: 375px) {
+  .react-datepicker__portal .react-datepicker__day-name,
   .react-datepicker__portal .react-datepicker__day {
     width: 3rem;
     line-height: 3rem;
