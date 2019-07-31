@@ -10,6 +10,7 @@ import {
   Box,
   Column,
   TransactionChart,
+  EmptyPage,
 } from 'components';
 
 import styled from 'styled-components';
@@ -157,7 +158,14 @@ const TransactionStatistic = () => {
         ready={!isLoading}
         customPlaceholder={<CustomPlaceholder height={450} type="box" />}
       >
-        {data && data.length ? <TransactionChart data={data} /> : <></>}
+        {data && data.length ? (
+          <TransactionChart data={data} />
+        ) : (
+          <EmptyPage
+            title="You have to have at leat one transaction for this month!"
+            text="You can add a transaction by tapping the plus below"
+          />
+        )}
       </ReactPlaceholder>
 
       <ReactPlaceholder

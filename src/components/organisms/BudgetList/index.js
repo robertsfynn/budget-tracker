@@ -9,6 +9,7 @@ import {
   BudgetBox,
   FirebaseContext,
   CustomPlaceholder,
+  EmptyPage,
 } from 'components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
@@ -96,7 +97,10 @@ const BudgetList = () => {
             />
           ))
         ) : (
-          <> </>
+          <EmptyPage
+            title="No budgets made yet!"
+            text="You can add a budget by pressing the top at the top of the page!"
+          />
         )}
       </ReactPlaceholder>
     </Container>

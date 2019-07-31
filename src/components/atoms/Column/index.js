@@ -5,7 +5,10 @@ const Column = styled.div`
   flex-basis: ${({ size }) => size || ''};
   max-width: ${({ size }) => size || ''};
   margin-left: ${({ offset }) => offset};
-  margin-right: ${({ marginRight }) => marginRight}rem;
+
+  @media (min-width: 330px) {
+    margin-right: ${({ marginRight }) => marginRight}rem;
+  }
 
   @media (min-width: 768px) {
     flex-basis: ${({ md }) => md || ''};

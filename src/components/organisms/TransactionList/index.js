@@ -4,7 +4,7 @@ import {
   Container,
   TransactionListItem,
   Total,
-  NoTransactions,
+  EmptyPage,
   Title,
   SmallHeader,
   Arrow,
@@ -120,7 +120,10 @@ const TransactionList = () => {
             <Total total={total} />
           </>
         ) : (
-          <NoTransactions />
+          <EmptyPage
+            title="No transactions yet!"
+            text="You can add transaction by tapping the + button below"
+          />
         )}
       </ReactPlaceholder>
     </Container>
