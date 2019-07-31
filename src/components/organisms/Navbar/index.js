@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, NavLink } from 'react-router-dom';
 import {
   Container,
   Row,
@@ -47,19 +47,19 @@ const Navbar = ({ history }) => {
       <Container>
         <Row center>
           <Column>
-            <Link to="/">
+            <NavLink to="/" exact>
               <NavbarItem text="Daily" logo={DailyLogo} />
-            </Link>
+            </NavLink>
           </Column>
           <Column>
-            <Link to="/stats">
+            <NavLink to="/stats">
               <NavbarItem text="Stats" logo={StatsLogo} />
-            </Link>
+            </NavLink>
           </Column>
           <Column offset="20%">
-            <Link to="/budget">
+            <NavLink to="/budget">
               <NavbarItem text="Budget" logo={BudgetLogo} />
-            </Link>
+            </NavLink>
           </Column>
           <Column onClick={logout}>
             <NavbarItem text="Logout" logo={ProfileLogo} />
