@@ -1,31 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
-    <defs>
-        <path id="b" d="M20.008 0C8.958 0 0 8.945 0 20.004v131.992C0 163.044 8.955 172 20.008 172h111.984c11.05 0 20.008-8.945 20.008-20.004V20.004C152 8.956 143.045 0 131.992 0H20.008z"/>
-        <filter id="a" width="182.9%" height="173.3%" x="-41.4%" y="-26.2%" filterUnits="objectBoundingBox">
-            <feOffset dy="18" in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="18"/>
-            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.03 0"/>
-        </filter>
-        <path id="d" d="M18.41 16.59L13.82 12l4.59-4.59L17 6l-6 6 6 6 1.41-1.41zM6 6h2v12H6V6z"/>
-        <filter id="c" width="551.2%" height="566.7%" x="-225.6%" y="-166.7%" filterUnits="objectBoundingBox">
-            <feOffset dy="8" in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="8"/>
-            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.180319315 0 0 0 0 0.345482139 0 0 0 0 0.706393495 0 0 0 0.2 0"/>
-        </filter>
-    </defs>
-    <g fill="none" fill-rule="evenodd">
-        <path fill="#FCFCFC" d="M-223-558h375v811h-375z"/>
-        <g transform="translate(-25 -25)">
-            <use fill="#000" filter="url(#a)" xlink:href="#b"/>
-            <use fill="#FFF" xlink:href="#b"/>
-            <circle cx="43" cy="43" r="18" fill="#FF3378"/>
-            <g>
-                <path d="M31 31v24h24V31z" opacity=".87"/>
-                <g fill-rule="nonzero" transform="matrix(-1 0 0 1 55 31)">
-                    <use fill="#000" filter="url(#c)" xlink:href="#d"/>
-                    <use fill="#FFF" xlink:href="#d"/>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M18 36C27.9411 36 36 27.9411 36 18C36 8.05887 27.9411 0 18 0C8.05887 0 0 8.05887 0 18C0 27.9411 8.05887 36 18 36Z" fill="#FF2525"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M11.59 22.59L16.18 18L11.59 13.41L13 12L19 18L13 24L11.59 22.59ZM24 12H22V24H24V12Z" fill="white"/>
 </svg>
