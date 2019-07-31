@@ -78,7 +78,7 @@ class Firebase {
       });
   }
 
-  async getTransactions(date) {
+  async getTransactionsByDay(date) {
     const user = this.auth.currentUser.uid;
     const transformedDate = transformDayDateToStartAndEndDate(date);
 
@@ -114,7 +114,7 @@ class Firebase {
     return budgets;
   }
 
-  async getTransactionsByDate(date) {
+  async getTransactionsByMonth(date) {
     const user = this.auth.currentUser.uid;
     const transformedDate = transformMonthDateToStartAndEndDate(date);
 

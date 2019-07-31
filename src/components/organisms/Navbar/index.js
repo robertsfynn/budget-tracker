@@ -47,6 +47,8 @@ const Navbar = ({ history }) => {
     history.push('/login');
   };
 
+  console.log("Navbar")
+
   return (
     <StyledNavbar>
       <Container>

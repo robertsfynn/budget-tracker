@@ -9,21 +9,13 @@ import {
   Container,
   Box,
   Column,
-  CustomTooltip,
+  TransactionChart,
 } from 'components';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
+
 import styled from 'styled-components';
 import DatePicker from 'react-datepicker';
 import ReactPlaceholder from 'react-placeholder';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../../../css/Statistics.css';
 import { ReactComponent as IncomeIcon } from 'assets/oval-blue.svg';
 import { ReactComponent as ExpenseIcon } from 'assets/oval-red.svg';
 
@@ -38,18 +30,6 @@ const StyledHeader = styled.h4`
   color: #aeb1b8;
   margin: 0;
   margin-top: ${({ marginTop }) => marginTop}rem;
-`;
-
-const StyledBalanceAmount = styled.p`
-  font-family: GTWalsheimPro;
-  font-size: 36px;
-  font-weight: bold;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 0.83;
-  letter-spacing: normal;
-  color: #1c202e;
-  margin-top: 1rem;
 `;
 
 const StyledAmount = styled.p`
@@ -108,22 +88,33 @@ const TransactionStatistic = () => {
   useEffect(() => {
     const getTransactions = async () => {
       const newData = [];
-      const transactions = await Firebase.getTransactionsByDate(currentDate);
+      const transactions = await Firebase.getTransactionsByMonth(currentDate);
+      let newExpenseAmount = 0;
+      let newIncomeAmount = 0;
 
       transactions.forEach((doc) => {
         const { date, amount, transaction } = doc.data();
         const dateDay = date.toDate().getDay();
-        const amountWithOperator = transaction === 'expense' ? -amount : amount;
+        let amountWithOperator;
+        if (transaction === 'expense') {
+          amountWithOperator = -amount;
+          newExpenseAmount += parseFloat(amount);
+        } else {
+          amountWithOperator = -amount;
+          newIncomeAmount += parseFloat(amount);
+        }
         const amountTransformed = parseFloat(amountWithOperator);
         newData.push({ dateDay, amountTransformed, transaction });
       });
 
       const formettedData = formatData(newData);
+      setExpenseAmount(newExpenseAmount);
+      setIncomeAmount(newIncomeAmount);
       setData(formettedData);
       setIsLoading(false);
     };
     getTransactions();
-  }, [currentDate]);
+  }, [currentDate, Firebase]);
 
   const toggleCalendar = (e) => {
     e && e.preventDefault();
@@ -166,43 +157,21 @@ const TransactionStatistic = () => {
         ready={!isLoading}
         customPlaceholder={<CustomPlaceholder height={450} />}
       >
-        {data && data.length ? (
-          <Box>
-            <StyledHeader>Net balance</StyledHeader>
-            <StyledBalanceAmount>
-              {data[data.length - 1].amount}€
-            </StyledBalanceAmount>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={data} style={{ marginLeft: '-1.3rem' }}>
-                <XAxis dataKey="dateDay" />
-                <YAxis />
-                <Tooltip content={<CustomTooltip />} />
-                <Line
-                  type="monotone"
-                  dataKey="amount"
-                  stroke="#ff3378"
-                  strokeWidth={3}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </Box>
-        ) : (
-          <></>
-        )}
+        {data && data.length ? <TransactionChart data={data} /> : <></>}
       </ReactPlaceholder>
       <Row>
         <Column>
           <Box marginRight>
             <IncomeIcon />
             <StyledHeader marginTop={2}>Income</StyledHeader>
-            <StyledAmount>$6,593.75</StyledAmount>
+            <StyledAmount>{incomeAmount}</StyledAmount>
           </Box>
         </Column>
         <Column>
           <Box>
             <ExpenseIcon />
             <StyledHeader marginTop={2}>Expense</StyledHeader>
-            <StyledAmount>$6,593.75</StyledAmount>
+            <StyledAmount>{exepenseAmount}</StyledAmount>
           </Box>
         </Column>
       </Row>

@@ -9,7 +9,6 @@ import {
   SmallHeader,
   Arrow,
   Row,
-  CustomPlaceholder,
 } from 'components';
 import styled from 'styled-components';
 import ReactPlaceholder from 'react-placeholder';
@@ -39,7 +38,7 @@ const TransactionList = () => {
   useEffect(() => {
     resetState();
     if (Firebase.getCurrentUser()) {
-      Firebase.getTransactions(currentDate).then((querySnapshot) => {
+      Firebase.getTransactionsByDay(currentDate).then((querySnapshot) => {
         const newTransactions = [];
         let newTotal = 0;
         querySnapshot.forEach((doc) => {
