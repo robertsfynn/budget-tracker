@@ -163,7 +163,7 @@ const TransactionStatistic = () => {
       <ReactPlaceholder
         showLoadingAnimation
         ready={!isLoading}
-        customPlaceholder={<CustomPlaceholder height={200} type="boxes" />}
+        customPlaceholder={<CustomPlaceholder height={185} type="boxes" />}
       >
         {incomeAmount || expenseAmount ? (
           <Row>
