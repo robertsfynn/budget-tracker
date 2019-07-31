@@ -28,13 +28,23 @@ const TransactionKind = ({ handleChangeBox }) => (
     </Title>
     <Row>
       <Column marginRight={1}>
-        <Box name="transaction" value="income" onClick={handleChangeBox}>
+        <Box
+          name="transaction"
+          value="income"
+          cursor="pointer"
+          onClick={handleChangeBox}
+        >
           <IncomeIcon name="transaction" value="income" />
           <StyledText>Income</StyledText>
         </Box>
       </Column>
       <Column>
-        <Box name="transaction" value="expense" onClick={handleChangeBox}>
+        <Box
+          name="transaction"
+          value="expense"
+          cursor="pointer"
+          onClick={handleChangeBox}
+        >
           <ExpenseIcon />
           <StyledText>Expense</StyledText>
         </Box>

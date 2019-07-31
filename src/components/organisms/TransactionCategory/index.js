@@ -28,12 +28,12 @@ const TransactionCategory = ({ handleChangeBox }) => (
         return null;
       }
       return (
-        <Column key={title}>
+        <Column marginRight={1} key={title}>
           <Box
             name="category"
             value={title}
             onClick={handleChangeBox}
-            marginRight
+            cursor="pointer"
           >
             <StyledCategoryIcon>
               <CategoryIcon category={title} />

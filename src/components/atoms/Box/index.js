@@ -10,7 +10,7 @@ const StyledBox = styled.div`
   margin-bottom: 1.5rem;
   position: relative;
   z-index: 2;
-  cursor: pointer;
+  cursor: ${({ cursor }) => cursor};
 
   border: ${({ active }) =>
     active ? 'solid 2px #ff3378' : ' solid 2px #ffffff'};
