@@ -32,9 +32,13 @@ const StyledAuthText = styled.p`
 
 const RegisterForm = ({ history }) => {
   const [values, setValues] = useState({ name: '', email: '', password: '' });
+  const [isLoading, setIsLoading] = useState(false);
   const Firebase = useContext(FirebaseContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     await Firebase.register(values.name, values.email, values.password);
     history.push('/');
   };
@@ -98,7 +102,7 @@ const RegisterForm = ({ history }) => {
             />
           </Column>
           <Column offset="10%" size="20%">
-            <Button type="arrow" />
+            <Button type="arrow" loading={isLoading} />
           </Column>
         </Row>
       </form>

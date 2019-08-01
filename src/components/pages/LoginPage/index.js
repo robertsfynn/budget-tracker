@@ -32,10 +32,13 @@ const StyledAuthText = styled.p`
 
 const LoginForm = ({ history }) => {
   const [values, setValues] = useState({ email: '', password: '' });
+  const [isLoading, setIsLoading] = useState(false);
   const Firebase = useContext(FirebaseContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     await Firebase.login(values.email, values.password);
     history.push('/');
   };
@@ -86,7 +89,7 @@ const LoginForm = ({ history }) => {
             />
           </Column>
           <Column offset="10%" size="20%">
-            <Button type="arrow" />
+            <Button type="arrow" loading={isLoading} />
           </Column>
         </Row>
       </form>

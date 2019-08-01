@@ -56,6 +56,7 @@ const BudgetForm = ({ history }) => {
     category: 'car',
     budget: '',
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const name = e.target.getAttribute('name');
@@ -69,6 +70,8 @@ const BudgetForm = ({ history }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     await Firebase.addBudget(values);
     history.push('/budget');
   };
@@ -123,7 +126,7 @@ const BudgetForm = ({ history }) => {
               />
             </Column>
             <Column offset="10%" size="10%">
-              <Button type="arrow" />
+              <Button type="arrow" loading={isLoading} />
             </Column>
           </Row>
         </form>

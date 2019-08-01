@@ -15,10 +15,37 @@ const ArrowButton = styled.button`
   background-color: #cfd4e6;
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
 
   :hover {
     background-color: #ff3378;
     transition: all 0.3s ease;
+  }
+
+  ${({ loading }) =>
+    loading &&
+    `
+    background: #ff3378;
+    :before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border-top: 2px solid #ffffff;
+    border-right: 2px solid transparent;
+    animation: spinner 0.6s linear infinite;
+    background: none;
+  `}
+}
+
+  @keyframes spinner {
+    to {transform: rotate(360deg);}
   }
 `;
 
@@ -34,10 +61,10 @@ const AddButton = styled.button`
   border: none;
 `;
 
-const Button = ({ type, ...props }) => {
+const Button = ({ type, loading, ...props }) => {
   switch (type) {
     case 'arrow':
-      return <ArrowButton {...props} />;
+      return <ArrowButton loading={loading ? 1 : 0} {...props} />;
     case 'add':
       return <AddButton {...props} />;
     default:
@@ -48,10 +75,12 @@ const Button = ({ type, ...props }) => {
 Button.propTypes = {
   type: PropTypes.string.isRequired,
   children: PropTypes.node,
+  loading: PropTypes.bool,
 };
 
 Button.defaultProps = {
   children: null,
+  loading: false,
 };
 
 export default Button;
