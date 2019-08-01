@@ -107,7 +107,7 @@ const TransactionStatistic = () => {
         const amountTransformed = parseFloat(amountWithOperator);
         newData.push({ dateDay, amountTransformed, transaction });
       });
-      console.log(newData);
+
       const formettedData = formatData(newData);
       setExpenseAmount(newExpenseAmount);
       setIncomeAmount(newIncomeAmount);
