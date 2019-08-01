@@ -111,7 +111,6 @@ const TransactionStatistic = () => {
       const formettedData = formatData(newData);
       setExpenseAmount(newExpenseAmount);
       setIncomeAmount(newIncomeAmount);
-      console.log(formettedData);
       setData(formettedData);
       setIsLoading(false);
     };
