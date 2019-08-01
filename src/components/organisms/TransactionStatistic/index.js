@@ -95,7 +95,7 @@ const TransactionStatistic = () => {
 
       transactions.forEach((doc) => {
         const { date, amount, transaction } = doc.data();
-        const dateDay = date.toDate().getDay();
+        const dateDay = date.toDate().getDate();
         let amountWithOperator;
         if (transaction === 'expense') {
           amountWithOperator = -amount;
@@ -107,10 +107,11 @@ const TransactionStatistic = () => {
         const amountTransformed = parseFloat(amountWithOperator);
         newData.push({ dateDay, amountTransformed, transaction });
       });
-
+      console.log(newData);
       const formettedData = formatData(newData);
       setExpenseAmount(newExpenseAmount);
       setIncomeAmount(newIncomeAmount);
+      console.log(formettedData);
       setData(formettedData);
       setIsLoading(false);
     };
