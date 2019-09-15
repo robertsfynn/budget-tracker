@@ -155,14 +155,13 @@ const TransactionStatistic = () => {
       ) : null}
       <ReactPlaceholder
         showLoadingAnimation
-        ready={!isLoading}
         customPlaceholder={<CustomPlaceholder height={450} type="box" />}
       >
         {data && data.length ? (
           <TransactionChart data={data} />
         ) : (
           <EmptyPage
-            title="You have to have at leat one transaction for this month!"
+            title="You have to have at least one transaction for this month!"
             text="You can add a transaction by tapping the plus below"
           />
         )}

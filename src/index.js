@@ -38,6 +38,9 @@ const GlobalStyles = createGlobalStyle`
   *:focus {
     outline: none;
   }
+  .rect-shape {
+    animation: react-placeholder-pulse 1.5s infinite;
+  }
 `;
 
 ReactDOM.render(
