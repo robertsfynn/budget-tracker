@@ -155,6 +155,7 @@ const TransactionStatistic = () => {
       ) : null}
       <ReactPlaceholder
         showLoadingAnimation
+        ready={!isLoading}
         customPlaceholder={<CustomPlaceholder height={450} type="box" />}
       >
         {data && data.length ? (
