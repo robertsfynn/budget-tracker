@@ -32,10 +32,6 @@ yarn start
 - [Recharts](http://recharts.org/en-US/)
 - [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/)
 
-## Authors
-
-- **Fynn Roberts** - [robertsfynn](https://github.com/robertsfynn)
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
