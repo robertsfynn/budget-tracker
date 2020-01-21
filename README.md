@@ -8,8 +8,6 @@ A simple budget planner, where you can track all your transactions in different 
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
 npm:
 
 ```
