@@ -2,7 +2,7 @@
 
 A simple budget planner, where you can track all your transactions in different categories, got some statistics and also can create monthly budgets.
 
-[Demo](http://budget-tracker.info/)
+[Demo](https://budget-planner.netlify.app/)
 
 ## Getting Started
 
